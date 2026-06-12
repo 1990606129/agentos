@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-  .sell-hero{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:80px 0}
+  .sell-hero{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding-top:80px;padding-bottom:80px}
   .sell-hero h1{font-family:'Space Grotesk';font-size:clamp(34px,4.5vw,52px);font-weight:800;color:var(--navy);line-height:1.06;margin-bottom:18px}
   .sell-hero p{font-size:18px;color:var(--slate);margin-bottom:28px;max-width:480px}
   .estimator{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:30px}
@@ -28,7 +28,7 @@
   @media(max-width:900px){.sell-hero{grid-template-columns:1fr;gap:36px}.steps{grid-template-columns:1fr}}
 
   @media(max-width:640px){
-    .sell-hero{padding:44px 0}
+    .sell-hero{padding-top:40px;padding-bottom:40px}
     .sell-hero h1{font-size:30px}
     .estimator{padding:22px 18px}
     .result .range{font-size:30px}
