@@ -50,10 +50,32 @@
 <section style="background:var(--bg-soft);border-top:1px solid var(--line)">
   <div class="wrap">
     <div class="sec-head row">
-      <div><div class="kicker">Investment-grade</div><h2>Featured commercial &amp; investment listings</h2><p>Income property and land currently on the platform.</p></div>
+      <div><div class="kicker">Investment-grade</div><h2>Commercial listings</h2><p>Leased, stabilized, and value-add assets currently on the platform.</p></div>
       <a href="listings.html" class="btn btn-ghost">All listings</a>
     </div>
     <div class="cards" id="com-grid"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head" style="margin:0 auto 40px;text-align:center"><div class="kicker">AGENT OS underwriting</div><h2>Screen a deal in ten seconds.</h2><p style="margin:0 auto">Drop in the numbers — AGENT OS returns cap rate, GRM, and an honest read on the deal, instantly.</p></div>
+    <div style="max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:30px">
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <div class="field" style="flex:1;min-width:150px"><label>Asking price</label><input type="number" id="uw-price" value="3400000"></div>
+        <div class="field" style="flex:1;min-width:150px"><label>Annual NOI</label><input type="number" id="uw-noi" value="207000"></div>
+        <div class="field" style="flex:1;min-width:150px"><label>Gross annual rent</label><input type="number" id="uw-rent" value="318000"></div>
+      </div>
+      <button class="btn btn-royal btn-block" onclick="underwrite()">Run the numbers</button>
+      <div id="uw-out" class="hidden" style="margin-top:20px;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:18px">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center;margin-bottom:14px">
+          <div><b id="uw-cap" style="font-family:'Space Grotesk';font-size:24px;color:var(--navy)">—</b><div style="font-size:12px;color:var(--slate)">CAP RATE</div></div>
+          <div><b id="uw-grm" style="font-family:'Space Grotesk';font-size:24px;color:var(--navy)">—</b><div style="font-size:12px;color:var(--slate)">GRM</div></div>
+          <div><b id="uw-ppd" style="font-family:'Space Grotesk';font-size:24px;color:var(--navy)">—</b><div style="font-size:12px;color:var(--slate)">NOI MARGIN</div></div>
+        </div>
+        <div id="uw-read" style="font-size:14px;color:var(--ink);border-top:1px solid var(--line);padding-top:12px"></div>
+      </div>
+    </div>
   </div>
 </section>
 <div id="site-footer"></div>
@@ -62,8 +84,20 @@
 <script src="./app.js"></script>
 <script>
   App.initChrome("buy");
-  const rows = DB.listings({sort:"high"}).filter(l => l.type==="Ranch" || l.type==="Condo" && l.price>900000 || l.price>=1800000).slice(0,6);
+  const rows = DB.listings({type:"Commercial", sort:"high"});
   document.getElementById("com-grid").innerHTML = rows.map(l=>App.listingCard(l)).join("");
+
+  window.underwrite = function(){
+    const p=+document.getElementById("uw-price").value||0, n=+document.getElementById("uw-noi").value||0, r=+document.getElementById("uw-rent").value||0;
+    if(!p||!n){alert("Enter a price and NOI");return}
+    const cap=(n/p*100), grm=r?(p/r):0, margin=r?(n/r*100):0;
+    document.getElementById("uw-cap").textContent=cap.toFixed(2)+"%";
+    document.getElementById("uw-grm").textContent=grm?grm.toFixed(1)+"x":"—";
+    document.getElementById("uw-ppd").textContent=margin?margin.toFixed(0)+"%":"—";
+    let read = cap>=7 ? "<b>MIRA\'s read:</b> Strong going-in yield for this rate environment. Verify rent-roll durability and deferred maintenance — at this cap, the market is pricing in risk somewhere. Find it before you close." : cap>=5 ? "<b>MIRA\'s read:</b> Market-rate deal. The return gets made in the buy-side negotiation and operational upside, not the going-in yield. Where\'s the rent growth coming from?" : "<b>MIRA\'s read:</b> Thin going-in yield. This only pencils with a value-add story, below-market leases rolling, or owner-user economics. Underwrite conservatively.";
+    document.getElementById("uw-read").innerHTML=read;
+    document.getElementById("uw-out").classList.remove("hidden");
+  };
 </script>
 </body>
 </html>

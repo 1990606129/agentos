@@ -83,11 +83,15 @@
             <button class="btn btn-ghost" id="savebtn" onclick="saveHome()">♥ Save</button>
           </div>
           <div class="keyspecs">
-            <div><b>${l.beds}</b><span>Bedrooms</span></div>
+            ${l.beds > 0 ? `<div><b>${l.beds}</b><span>Bedrooms</span></div>
             <div><b>${l.baths}</b><span>Bathrooms</span></div>
             <div><b>${l.sqft.toLocaleString()}</b><span>Sq ft</span></div>
             <div><b>${l.type}</b><span>${l.lot}</span></div>
-            <div><b>${l.year}</b><span>Year built</span></div>
+            <div><b>${l.year}</b><span>Year built</span></div>`
+            : `<div><b>${l.lot}</b><span>Acreage</span></div>
+            ${l.sqft > 0 ? `<div><b>${l.sqft.toLocaleString()}</b><span>Building sq ft</span></div>` : ``}
+            <div><b>${l.type}</b><span>Property type</span></div>
+            ${l.year > 0 ? `<div><b>${l.year}</b><span>Year built</span></div>` : ``}`}
           </div>
           <h3>About this home</h3>
           <p class="desc">${l.desc}</p>

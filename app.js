@@ -37,7 +37,7 @@
       </div>
       <div class="card-body">
         <div class="price">${App.fmtPrice(l.price)}</div>
-        <div class="specs"><span>${l.beds} bd</span><span>${l.baths} ba</span><span>${l.sqft.toLocaleString()} sqft</span><span>${l.type}</span></div>
+        <div class="specs">${l.beds > 0 ? `<span>${l.beds} bd</span><span>${l.baths} ba</span><span>${l.sqft.toLocaleString()} sqft</span>` : (l.sqft > 0 ? `<span>${l.sqft.toLocaleString()} sqft bldg</span><span>${l.lot}</span>` : `<span>${l.lot}</span>`)}<span>${l.type}</span></div>
         <div class="addr">${l.address}, ${l.city}, ${l.state}</div>
       </div>
     </a>`;

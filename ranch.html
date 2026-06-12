@@ -58,15 +58,43 @@
     <div class="cards" id="ranch-grid"></div>
   </div>
 </section>
+
+<section style="padding-top:0">
+  <div class="agnt-section">
+    <div class="wrap agnt-grid">
+      <div>
+        <span class="kicker-light">AGENT OS FOR LAND</span>
+        <h2>Due diligence, <span class="grad">accelerated.</span></h2>
+        <p class="lede">AGENT OS pre-screens every parcel against the questions that kill land deals — water, access, zoning, easements — before you ever drive the property.</p>
+        <div class="agnt-feats">
+          <div class="agnt-feat"><div class="ico">💧</div><div><b>Water &amp; rights flags</b><span>Well permits, riparian claims, and irrigation allocations surfaced automatically.</span></div></div>
+          <div class="agnt-feat"><div class="ico">🗺️</div><div><b>Parcel intelligence</b><span>Zoning, easements, floodplain, and soil class layered onto every listing.</span></div></div>
+        </div>
+        <a href="tech.html" class="btn btn-white">See the platform →</a>
+      </div>
+      <div class="agnt-ui" aria-label="AGENT OS land screening preview">
+        <div class="agnt-ui-bar"><div class="dots"><i></i><i></i><i></i></div><b>MIRA — Parcel Screen</b></div>
+        <div class="agnt-ui-body">
+          <div class="msg user">Screen the 120 acres on Singing Hills Rd.</div>
+          <div class="msg ai"><b>Screen complete:</b> two permitted wells ✓, deeded road access ✓, ag zoning with 35-acre split potential ✓. One note — power is at the road, not on site. Comparable land trades at $7,400–$8,300 per acre. Want the full parcel report?</div>
+        </div>
+        <div class="agnt-ui-stats">
+          <div class="agnt-stat"><b>23</b><span>DATA LAYERS</span></div>
+          <div class="agnt-stat"><b>1</b><span>NOTE FLAGGED</span></div>
+          <div class="agnt-stat"><b>8 sec</b><span>SCREEN TIME</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <div id="site-footer"></div>
 <script src="./data.js"></script>
 <script src="./db.js"></script>
 <script src="./app.js"></script>
 <script>
   App.initChrome("buy");
-  const rows = DB.listings().filter(l => l.type==="Ranch" || (l.lot && parseFloat(l.lot) >= 0.5));
-  document.getElementById("ranch-grid").innerHTML =
-    (rows.length ? rows : DB.listings({sort:"high"}).slice(0,3)).map(l=>App.listingCard(l)).join("");
+  const rows = DB.listings().filter(l => l.type==="Ranch" || l.type==="Land");
+  document.getElementById("ranch-grid").innerHTML = rows.map(l=>App.listingCard(l)).join("");
 </script>
 </body>
 </html>

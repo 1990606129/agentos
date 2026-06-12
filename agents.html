@@ -36,6 +36,21 @@
     <p>80,000+ agents across 29 markets, all on one connected platform. Local expertise, global reach.</p>
   </div>
 </div>
+<section style="padding:36px 0 0">
+  <div class="wrap">
+    <div style="background:var(--navy);border-radius:var(--radius-lg);padding:28px 30px;color:#fff;display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+      <div style="flex:1;min-width:240px">
+        <div style="font-family:'Space Grotesk';font-weight:600;font-size:18px;margin-bottom:4px">Let MIRA match you</div>
+        <div style="font-size:14px;color:#B9C4D6">Tell us what you need — MIRA pairs you with the right specialist instantly.</div>
+      </div>
+      <form style="display:flex;gap:10px;flex:2;min-width:280px" onsubmit="return miraMatch(event)">
+        <input id="mm-q" placeholder="e.g. waterfront in Miami, 40 acres near Denver, first home…" style="flex:1;border:none;border-radius:10px;padding:13px 15px;font-size:14.5px;font-family:inherit">
+        <button class="btn btn-royal" type="submit">Match me</button>
+      </form>
+    </div>
+    <div id="mm-out" class="hidden" style="margin-top:14px;background:#F4F8FF;border:1px solid rgba(46,107,230,.25);border-radius:12px;padding:16px 20px;font-size:14.5px"></div>
+  </div>
+</section>
 <section style="padding:36px 0 90px">
   <div class="wrap">
     <div class="filters">
@@ -69,6 +84,26 @@
   }
   document.getElementById("ag-q").addEventListener("input", render);
   render();
+  window.miraMatch = (e) => {
+    e.preventDefault();
+    const q = document.getElementById("mm-q").value.toLowerCase();
+    const out = document.getElementById("mm-out");
+    let pick = null, why = "";
+    if(q.includes("water")||q.includes("coast")||q.includes("miami")||q.includes("gables")){pick="a6";why="waterfront and coastal estates are all he does";}
+    else if(q.includes("land")||q.includes("ranch")||q.includes("acre")){pick="a8";why="18 years in acreage, water rights, and ranch property";}
+    else if(q.includes("first")||q.includes("starter")){pick="a3";why="she makes the first home feel possible";}
+    else if(q.includes("invest")||q.includes("multi")||q.includes("commercial")||q.includes("cap")){pick="a2";why="he underwrites investment deals every day";}
+    else if(q.includes("luxur")||q.includes("estate")){pick="a1";why="$90M+ in luxury volume and counting";}
+    else if(q.includes("relocat")||q.includes("moving")||q.includes("nashville")){pick="a4";why="corporate relocation is his entire practice";}
+    else if(q.includes("condo")||q.includes("seattle")||q.includes("downtown")){pick="a7";why="downtown condos are her home turf";}
+    else if(q.includes("new")||q.includes("build")||q.includes("denver")){pick="a5";why="new construction across the Front Range";}
+    else if(q.includes("austin")||q.includes("modern")||q.includes("design")){pick="a9";why="design-forward homes are her specialty";}
+    const a = pick ? DB.agent(pick) : DB.agents()[11];
+    why = why || "a top team lead who can route you to the perfect specialist";
+    out.innerHTML = `<b>MIRA suggests:</b> <a href="agent.html?id=${a.id}" style="color:var(--royal-bright);font-weight:600">${a.name}</a> — ${a.title}, ${a.market}. Why: ${why}. <a href="agent.html?id=${a.id}" style="font-weight:600;color:var(--royal-bright)">View profile →</a>`;
+    out.classList.remove("hidden");
+    return false;
+  };
 </script>
 </body>
 </html>

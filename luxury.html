@@ -35,7 +35,7 @@
 <section>
   <div class="wrap">
     <div class="sec-head row">
-      <div><div class="kicker">The collection</div><h2>Current luxury listings</h2><p>Hand-selected homes above $1.2M across our markets.</p></div>
+      <div><div class="kicker">The collection</div><h2>Current luxury listings</h2><p>Hand-selected residences above $1.2M across our markets.</p></div>
       <a href="listings.html" class="btn btn-ghost">All listings</a>
     </div>
     <div class="cards" id="lux-grid"></div>
@@ -51,6 +51,35 @@
     </div>
   </div>
 </section>
+
+<section style="padding-top:0">
+  <div class="agnt-section">
+    <div class="wrap agnt-grid">
+      <div>
+        <span class="kicker-light">AGENT OS FOR LUXURY</span>
+        <h2>Intelligence behind <span class="grad">every estate.</span></h2>
+        <p class="lede">Luxury pricing is an art backed by scarce data. AGENT OS reads off-market signals, qualified-buyer demand, and global comps — so your strategy is never a guess.</p>
+        <div class="agnt-feats">
+          <div class="agnt-feat"><div class="ico">🌍</div><div><b>Global buyer matching</b><span>Qualified buyers across 29 markets, matched before you ever go public.</span></div></div>
+          <div class="agnt-feat"><div class="ico">🔒</div><div><b>Off-market intelligence</b><span>Private-sale comps and quiet listings most CMAs never see.</span></div></div>
+        </div>
+        <a href="tech.html" class="btn btn-white">See the platform →</a>
+      </div>
+      <div class="agnt-ui" aria-label="AGENT OS luxury strategy preview">
+        <div class="agnt-ui-bar"><div class="dots"><i></i><i></i><i></i></div><b>MIRA — Luxury Listing Strategy</b></div>
+        <div class="agnt-ui-body">
+          <div class="msg user">Position the Old Cutler estate for a Q3 launch.</div>
+          <div class="msg ai"><b>Analyzed 9 private + 6 public comps:</b> the data supports a quiet pre-market at $2.98M. I found 11 matched buyers — 4 international. Recommend a two-week private exclusive before MLS. Want the full launch plan?</div>
+        </div>
+        <div class="agnt-ui-stats">
+          <div class="agnt-stat"><b>15</b><span>COMPS READ</span></div>
+          <div class="agnt-stat"><b>11</b><span>MATCHED BUYERS</span></div>
+          <div class="agnt-stat"><b>4</b><span>INTERNATIONAL</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <div id="site-footer"></div>
 <script src="./data.js"></script>
 <script src="./db.js"></script>
@@ -58,7 +87,7 @@
 <script>
   App.initChrome("buy");
   document.getElementById("lux-grid").innerHTML =
-    DB.listings({minPrice:1200000, sort:"high"}).map(l=>App.listingCard(l)).join("");
+    DB.listings({minPrice:1200000, sort:"high"}).filter(l=>l.type==="House"||l.type==="Condo").map(l=>App.listingCard(l)).join("");
 </script>
 </body>
 </html>
