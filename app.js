@@ -69,7 +69,7 @@
          <a href="signup.html" class="btn btn-navy">Get started</a>`;
 
     mount.innerHTML = `
-      <div style="background:#0C2340;color:#9FC2FF;font-size:12.5px;font-weight:600;text-align:center;padding:7px 16px;letter-spacing:.02em">CONCEPT DEMO — internal eXp marketing prototype, not the official eXp Realty website</div>
+      <div class="demo-banner">CONCEPT DEMO — internal eXp marketing prototype, not the official eXp Realty website</div>
       <header class="nav">
         <div class="nav-inner">
           <a href="index.html" class="logo">e<span>X</span>p<span class="sub">REALTY</span></a>
@@ -80,6 +80,10 @@
         </div>
         <div class="mobile-menu" id="mobile-menu">
           ${links.map(([h, l]) => `<a href="${h}">${l}</a>`).join("")}
+          <a href="tech.html">Agent OS</a>
+          <a href="luxury.html">eXp Luxury</a>
+          <a href="commercial.html">eXp Commercial</a>
+          <a href="ranch.html">eXp Land &amp; Ranch</a>
           ${user ? `<a href="dashboard.html">Dashboard</a><a href="#" onclick="DB.logout();location.reload();return false;">Log out</a>`
                  : `<a href="login.html">Log in</a><a href="signup.html">Get started</a>`}
         </div>
