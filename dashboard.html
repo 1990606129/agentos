@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyAgentOS — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .dash{padding:36px 0 90px}
+  .dash-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+  .dash-head h1{font-family:'Sora';font-size:30px;font-weight:800;color:var(--navy)}
+  .dash-head p{color:var(--slate);font-size:15px}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:24px}
+  .kpi{border:1px solid var(--line);border-radius:var(--radius);padding:22px;background:#fff}
+  .kpi .lab{font-size:12.5px;color:var(--slate);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+  .kpi b{font-family:'Sora';font-size:30px;font-weight:800;color:var(--navy);display:block;margin:8px 0 4px}
+  .kpi .chg{font-size:12.5px;font-weight:600}
+  .kpi .up{color:#16794B}.kpi .down{color:#B42318}
+  .dash-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:24px}
+  .panel{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:24px;margin-bottom:24px}
+  .panel h3{font-family:'Sora';font-size:18px;color:var(--navy);margin-bottom:4px}
+  .panel .ph-sub{font-size:13.5px;color:var(--slate);margin-bottom:18px}
+  .pipeline-row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .pipeline-row:last-child{border-bottom:none}
+  .pipeline-row img{width:48px;height:48px;border-radius:10px;object-fit:cover}
+  .pipeline-row .info{flex:1}
+  .pipeline-row .info b{font-size:14.5px;color:var(--navy);display:block}
+  .pipeline-row .info span{font-size:12.5px;color:var(--slate)}
+  .stage{font-size:11.5px;font-weight:700;padding:5px 11px;border-radius:99px}
+  .stage.offer{background:#FFF3E0;color:#B25E00}
+  .stage.escrow{background:#EAF2FF;color:var(--royal)}
+  .stage.closing{background:#ECFDF3;color:#16794B}
+  .stage.lead{background:#F3EFFF;color:#6B3FD4}
+  .bars{display:flex;align-items:flex-end;gap:10px;height:150px;margin-top:10px}
+  .bars .bar{flex:1;background:linear-gradient(180deg,var(--royal-bright),var(--royal));border-radius:7px 7px 0 0;position:relative;min-height:8px}
+  .bars .bar span{position:absolute;bottom:-22px;left:0;right:0;text-align:center;font-size:11px;color:var(--slate)}
+  /* MIRA */
+  .mira{border:1px solid rgba(46,107,230,.2);border-radius:var(--radius);overflow:hidden}
+  .mira-bar{background:var(--navy);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:10px;font-family:'Sora';font-weight:600;font-size:14px}
+  .mira-bar .dot{width:8px;height:8px;border-radius:50%;background:var(--mint)}
+  .mira-body{padding:18px;display:grid;gap:12px;max-height:340px;overflow:auto;background:var(--bg-soft)}
+  .mira-msg{font-size:13.5px;line-height:1.5;padding:11px 14px;border-radius:13px;max-width:90%}
+  .mira-msg.user{background:var(--royal-bright);color:#fff;justify-self:end;border-bottom-right-radius:4px}
+  .mira-msg.ai{background:#fff;border:1px solid var(--line);color:var(--ink);border-bottom-left-radius:4px}
+  .mira-input{display:flex;gap:8px;padding:14px;border-top:1px solid var(--line);background:#fff}
+  .mira-input input{flex:1;border:1.5px solid var(--line);border-radius:10px;padding:11px 13px;font-size:14px;font-family:inherit}
+  .mira-input input:focus{outline:none;border-color:var(--royal-bright)}
+  .quick{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .quick button{font-size:13px;font-weight:600;color:var(--royal);background:#EEF3FC;border:none;border-radius:99px;padding:8px 14px;cursor:pointer}
+  .quick button:hover{background:#dde8fb}
+  @media(max-width:900px){.kpis{grid-template-columns:1fr 1fr}.dash-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div class="dash"><div class="wrap" id="dash"></div></div>
+<div id="site-footer"></div>
+<script src="./data.js"></script>
+<script src="./db.js"></script>
+<script src="./app.js"></script>
+<script src="./auth.js"></script>
+<script>
+  App.initChrome("");
+  const user = Auth.require("dashboard.html");
+  if (user) {
+    const saved = DB.favorites(user.id).map(id => DB.listing(id)).filter(Boolean);
+    const months = [["Jan",55],["Feb",70],["Mar",62],["Apr",88],["May",95],["Jun",78]];
+    const maxV = Math.max(...months.map(m=>m[1]));
+    const pipeline = [
+      { l:"L1002", name:"The Reyes Family", stage:"offer", note:"Offer submitted · $1.16M" },
+      { l:"L1005", name:"Jordan Kim", stage:"escrow", note:"In escrow · closes Jul 2" },
+      { l:"L1009", name:"Amara Osei", stage:"closing", note:"Closing this week 🎉" },
+      { l:"L1014", name:"New web lead", stage:"lead", note:"Requested a tour · 2h ago" }
+    ];
+    document.getElementById("dash").innerHTML = `
+      <div class="dash-head">
+        <div><h1>Good to see you, ${user.name.split(" ")[0]}.</h1><p>Here's your business at a glance — powered by AGENT OS.</p></div>
+        <a href="listings.html" class="btn btn-navy">+ New search</a>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><div class="lab">YTD Volume</div><b>$24.8M</b><div class="chg up">▲ 18% vs last year</div></div>
+        <div class="kpi"><div class="lab">Active deals</div><b>11</b><div class="chg up">▲ 3 this month</div></div>
+        <div class="kpi"><div class="lab">Commission (YTD)</div><b>$612K</b><div class="chg up">▲ 12%</div></div>
+        <div class="kpi"><div class="lab">Revenue share</div><b>$18.4K</b><div class="chg up">▲ 9%</div></div>
+      </div>
+      <div class="dash-grid">
+        <div>
+          <div class="panel">
+            <h3>Production</h3><div class="ph-sub">Closed volume by month ($ in 100Ks)</div>
+            <div class="bars">${months.map(m=>`<div class="bar" style="height:${m[1]/maxV*100}%"><span>${m[0]}</span></div>`).join("")}</div>
+          </div>
+          <div class="panel">
+            <h3>Pipeline</h3><div class="ph-sub">Your active transactions</div>
+            ${pipeline.map(p=>{const lg=DB.listing(p.l);return `<div class="pipeline-row">
+              <img src="${lg?lg.photos[0]:''}" alt="">
+              <div class="info"><b>${p.name}</b><span>${lg?lg.address+', '+lg.city:''} · ${p.note}</span></div>
+              <span class="stage ${p.stage}">${p.stage[0].toUpperCase()+p.stage.slice(1)}</span></div>`;}).join("")}
+          </div>
+          <div class="panel">
+            <h3>Saved homes</h3><div class="ph-sub">${saved.length?'Homes you and your clients are watching':'No saved homes yet'}</div>
+            ${saved.length ? `<div class="cards" style="grid-template-columns:1fr 1fr">${saved.slice(0,4).map(l=>App.listingCard(l)).join("")}</div>`
+              : `<p class="muted" style="font-size:14px">Tap the ♥ on any listing to save it here. <a href="listings.html" style="color:var(--royal-bright);font-weight:600">Browse listings →</a></p>`}
+          </div>
+        </div>
+        <div>
+          <div class="panel" id="mira" style="padding:0;overflow:hidden">
+            <div class="mira">
+              <div class="mira-bar"><span class="dot"></span>MIRA · AI Co-Pilot</div>
+              <div class="mira-body" id="mira-body">
+                <div class="mira-msg ai">Hi ${user.name.split(" ")[0]} 👋 I'm MIRA. I can pull comps, draft offers, summarize your pipeline, or prep your next listing appointment. What do you need?</div>
+              </div>
+              <div class="quick">
+                <button onclick="ask('Summarize my pipeline')">Summarize my pipeline</button>
+                <button onclick="ask('What should I price 92 Canyon Ridge at?')">Price a listing</button>
+                <button onclick="ask('Draft a follow-up to my new lead')">Draft a follow-up</button>
+              </div>
+              <form class="mira-input" onsubmit="return send(event)">
+                <input id="mira-q" placeholder="Ask MIRA anything…" autocomplete="off">
+                <button class="btn btn-royal" type="submit">Send</button>
+              </form>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Today</h3><div class="ph-sub">From your connected calendar</div>
+            <div class="pipeline-row"><div class="info"><b>11:00 — Listing appt</b><span>6 Westlake Cove, Austin</span></div></div>
+            <div class="pipeline-row"><div class="info"><b>2:30 — Buyer tour</b><span>3 homes · Coral Gables</span></div></div>
+            <div class="pipeline-row"><div class="info"><b>5:00 — Closing call</b><span>Amara Osei · title company</span></div></div>
+          </div>
+        </div>
+      </div>`;
+
+    // MIRA canned responses (demo)
+    window.ask = (q) => { document.getElementById("mira-q").value = q; send(new Event("submit")); };
+    window.send = (e) => {
+      e.preventDefault && e.preventDefault();
+      const inp = document.getElementById("mira-q");
+      const q = inp.value.trim(); if(!q) return false;
+      const body = document.getElementById("mira-body");
+      body.insertAdjacentHTML("beforeend", `<div class="mira-msg user">${q}</div>`);
+      inp.value = "";
+      const a = miraReply(q);
+      setTimeout(()=>{ body.insertAdjacentHTML("beforeend", `<div class="mira-msg ai">${a}</div>`); body.scrollTop = body.scrollHeight; }, 350);
+      body.scrollTop = body.scrollHeight;
+      return false;
+    };
+    function miraReply(q){
+      const s = q.toLowerCase();
+      if(s.includes("pipeline")) return "You have <b>11 active deals</b>. 1 is closing this week (Amara Osei), 1 in escrow (Jordan Kim, closes Jul 2), and a fresh web lead from 2h ago that hasn't been contacted. Want me to draft that first outreach?";
+      if(s.includes("price")||s.includes("canyon")) return "For <b>92 Canyon Ridge Dr</b>: 14 comps within 0.5 mi support a range of <b>$1.15M–$1.21M</b>. Days-on-market is down 18% in 78746. I'd list at $1.195M to leave room for a multiple-offer push. Shall I build the CMA deck?";
+      if(s.includes("follow")||s.includes("lead")) return "Drafted: “Hi! Thanks for requesting a tour of the Gulch condo — I have Saturday at 11 or 1 open and can line up two similar units nearby. Which works?” Want me to send it or tweak the tone?";
+      return "Got it. In the full product I'd pull from your MyAgentOS data and CRM to answer that. For this prototype, try the quick prompts above to see how MIRA works.";
+    }
+  }
+</script>
+</body>
+</html>

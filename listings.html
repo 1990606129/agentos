@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browse Listings — AgentOS</title>
+<meta name="description" content="Search every active listing across our markets. Filter by price, beds, type, and city.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="site-nav"></div>
+
+<div class="page-head">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Listings</div>
+    <h1>Find your next home</h1>
+    <p>Browse every active listing across our markets, powered by AGENT OS matching.</p>
+  </div>
+</div>
+
+<section style="padding:36px 0 90px">
+  <div class="wrap">
+    <div class="filters">
+      <input type="text" id="f-q" placeholder="City, ZIP, address, or type…">
+      <select id="f-city"></select>
+      <select id="f-type"></select>
+      <select id="f-beds">
+        <option value="any">Beds: Any</option>
+        <option value="2">2+ beds</option>
+        <option value="3">3+ beds</option>
+        <option value="4">4+ beds</option>
+        <option value="5">5+ beds</option>
+      </select>
+      <select id="f-price">
+        <option value="all">Any price</option>
+        <option value="0-500000">Under $500K</option>
+        <option value="500000-800000">$500K–$800K</option>
+        <option value="800000-1200000">$800K–$1.2M</option>
+        <option value="1200000-2000000">$1.2M–$2M</option>
+        <option value="2000000-99000000">$2M+</option>
+      </select>
+      <select id="f-sort">
+        <option value="">Sort: Featured</option>
+        <option value="low">Price: Low to High</option>
+        <option value="high">Price: High to Low</option>
+        <option value="sqft">Largest</option>
+      </select>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="cards" id="grid"></div>
+    <div id="empty" class="empty hidden"><div class="ico">🔍</div><h3 style="color:var(--navy);margin-bottom:6px">No homes match those filters</h3><p>Try widening your price range or clearing the search.</p></div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="./data.js"></script>
+<script src="./db.js"></script>
+<script src="./app.js"></script>
+<script>
+  App.initChrome("buy");
+  const user = DB.currentUser();
+
+  // Populate selects
+  const citySel = document.getElementById("f-city");
+  citySel.innerHTML = '<option value="all">All cities</option>' + DB.cities().map(c => `<option value="${c}">${c}</option>`).join("");
+  const typeSel = document.getElementById("f-type");
+  typeSel.innerHTML = '<option value="all">All types</option>' + DB.types().map(t => `<option value="${t}">${t}</option>`).join("");
+
+  // Prefill from URL
+  const params = new URLSearchParams(location.search);
+  if (params.get("q")) document.getElementById("f-q").value = params.get("q");
+  if (params.get("type")) typeSel.value = params.get("type");
+  if (params.get("city")) citySel.value = params.get("city");
+
+  // Favorite handler
+  App.onFav = (id, el) => {
+    if (!user) { location.href = "login.html?next=listings.html"; return; }
+    const on = DB.toggleFavorite(user.id, id);
+    el.classList.toggle("active", on);
+  };
+
+  function render() {
+    const q = document.getElementById("f-q").value.trim();
+    const city = citySel.value, type = typeSel.value;
+    const beds = document.getElementById("f-beds").value;
+    const sort = document.getElementById("f-sort").value;
+    const [minP, maxP] = (document.getElementById("f-price").value || "all").split("-");
+    const rows = DB.listings({
+      q, city, type, beds, sort,
+      minPrice: minP && minP !== "all" ? minP : null,
+      maxPrice: maxP ? maxP : null
+    });
+    const grid = document.getElementById("grid");
+    document.getElementById("count").textContent = rows.length + " home" + (rows.length === 1 ? "" : "s");
+    document.getElementById("empty").classList.toggle("hidden", rows.length > 0);
+    grid.innerHTML = rows.map(l =>
+      App.listingCard(l, { showFav: true, favActive: user && DB.isFavorite(user.id, l.id) })).join("");
+  }
+  ["f-q","f-city","f-type","f-beds","f-price","f-sort"].forEach(id =>
+    document.getElementById(id).addEventListener("input", render));
+  render();
+</script>
+</body>
+</html>

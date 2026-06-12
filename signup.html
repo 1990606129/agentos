@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create account — AgentOS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="site-nav"></div>
+<div class="wrap">
+  <div class="auth-card">
+    <h1>Get started</h1>
+    <p class="sub">Create your AGENT OS account in seconds.</p>
+    <div class="demo-tip">This is a prototype — your account is saved locally in this browser only.</div>
+    <div id="alert"></div>
+    <form id="form" onsubmit="return doSignup(event)">
+      <div class="field"><label>Full name</label><input type="text" id="name" required placeholder="Jordan Rivera"></div>
+      <div class="field"><label>Email</label><input type="email" id="email" required placeholder="you@email.com"></div>
+      <div class="field"><label>Password</label><input type="password" id="password" required minlength="6" placeholder="At least 6 characters"><div class="hint">Use 6+ characters.</div></div>
+      <button class="btn btn-navy btn-block btn-lg" type="submit">Create account</button>
+    </form>
+    <div class="auth-alt">Already have an account? <a href="login.html">Log in</a></div>
+  </div>
+</div>
+<div id="site-footer"></div>
+<script src="./data.js"></script>
+<script src="./db.js"></script>
+<script src="./app.js"></script>
+<script src="./auth.js"></script>
+<script>
+  App.initChrome("");
+  function doSignup(e){
+    e.preventDefault();
+    const r = DB.signup({
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      password: document.getElementById("password").value
+    });
+    const al = document.getElementById("alert");
+    if(!r.ok){ al.innerHTML = `<div class="notice err">${r.error}</div>`; return false; }
+    location.href = Auth.nextUrl() || "dashboard.html";
+    return false;
+  }
+</script>
+</body>
+</html>

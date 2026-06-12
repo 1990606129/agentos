@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sell a Home — AgentOS</title>
+<meta name="description" content="Get a free, data-backed home value estimate powered by AGENT OS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .sell-hero{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:80px 0}
+  .sell-hero h1{font-family:'Sora';font-size:clamp(34px,4.5vw,52px);font-weight:800;color:var(--navy);line-height:1.06;margin-bottom:18px}
+  .sell-hero p{font-size:18px;color:var(--slate);margin-bottom:28px;max-width:480px}
+  .estimator{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:30px}
+  .estimator h3{font-family:'Sora';font-size:20px;color:var(--navy);margin-bottom:4px}
+  .estimator .sub{font-size:14px;color:var(--slate);margin-bottom:20px}
+  .result{display:none;text-align:center;padding:8px 0 0}
+  .result.show{display:block}
+  .result .range{font-family:'Sora';font-size:40px;font-weight:800;color:var(--royal-bright);margin:6px 0}
+  .result .conf{font-size:13px;color:var(--slate);margin-bottom:18px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:20px}
+  .step{text-align:center;padding:10px}
+  .step .n{width:44px;height:44px;border-radius:12px;background:#EEF3FC;color:var(--royal-bright);font-family:'Sora';font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+  .step b{font-family:'Sora';color:var(--navy);display:block;margin-bottom:6px}
+  .step p{font-size:14px;color:var(--slate)}
+  @media(max-width:900px){.sell-hero{grid-template-columns:1fr;gap:36px}.steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<section>
+  <div class="wrap sell-hero">
+    <div>
+      <div class="kicker" style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--royal-bright);margin-bottom:14px">Sell with leverage</div>
+      <h1>Know what your home is worth — in seconds.</h1>
+      <p>AGENT OS analyzes live comps, demand signals, and local trends to give you a pricing range you can defend. Then we connect you with a top local agent to take it to market.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="agents.html" class="btn btn-navy">Talk to an agent</a>
+        <a href="#how" class="btn btn-ghost">How it works</a>
+      </div>
+    </div>
+    <div class="estimator">
+      <h3>Free home value estimate</h3>
+      <div class="sub">Enter an address to see an AGENT OS pricing range.</div>
+      <form id="est-form" onsubmit="return estimate(event)">
+        <div class="field"><label>Street address</label><input type="text" id="addr" required placeholder="1847 Lakeview Terrace"></div>
+        <div class="field"><label>City</label><input type="text" id="city" required placeholder="Coral Gables, FL"></div>
+        <div style="display:flex;gap:12px">
+          <div class="field" style="flex:1"><label>Beds</label><select id="beds"><option>2</option><option selected>3</option><option>4</option><option>5</option></select></div>
+          <div class="field" style="flex:1"><label>Baths</label><select id="baths"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div>
+          <div class="field" style="flex:1"><label>Sq ft</label><input type="number" id="sqft" value="2000" min="400"></div>
+        </div>
+        <button class="btn btn-royal btn-block btn-lg" type="submit">Get my estimate</button>
+      </form>
+      <div class="result" id="result">
+        <div class="conf">Estimated market value</div>
+        <div class="range" id="range">—</div>
+        <div class="conf">AGENT OS confidence: <b id="conf">High</b> · based on local price-per-sqft and recent comps</div>
+        <a href="agents.html" class="btn btn-navy btn-block" style="margin-top:8px">Connect with a local agent</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="how" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head" style="margin:0 auto 8px;text-align:center"><div class="kicker">How it works</div><h2>From estimate to sold.</h2></div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><b>Get your number</b><p>AGENT OS prices your home from live comps and demand — instantly, free.</p></div>
+      <div class="step"><div class="n">2</div><b>Meet your agent</b><p>We match you with a top local specialist who builds your go-to-market plan.</p></div>
+      <div class="step"><div class="n">3</div><b>Sell for more</b><p>Pro marketing and a global agent network put your listing in front of more buyers.</p></div>
+    </div>
+  </div>
+</section>
+<div id="site-footer"></div>
+<script src="./data.js"></script>
+<script src="./db.js"></script>
+<script src="./app.js"></script>
+<script>
+  App.initChrome("sell");
+  function estimate(e){
+    e.preventDefault();
+    const sqft = +document.getElementById("sqft").value || 2000;
+    const beds = +document.getElementById("beds").value;
+    const city = document.getElementById("city").value.toLowerCase();
+    // Demo model: city price-per-sqft baseline + bed adjustment
+    let ppsf = 285;
+    if(city.includes("austin")) ppsf = 410;
+    else if(city.includes("seattle")) ppsf = 520;
+    else if(city.includes("coral")||city.includes("miami")) ppsf = 480;
+    else if(city.includes("denver")) ppsf = 360;
+    else if(city.includes("nashville")) ppsf = 300;
+    const base = sqft * ppsf + (beds-3)*22000;
+    const low = Math.round(base*0.96/1000)*1000, high = Math.round(base*1.05/1000)*1000;
+    document.getElementById("range").textContent = App.fmtPriceShort(low) + " – " + App.fmtPriceShort(high);
+    document.getElementById("conf").textContent = sqft > 800 ? "High" : "Moderate";
+    document.getElementById("result").classList.add("show");
+    document.getElementById("result").scrollIntoView({behavior:"smooth",block:"nearest"});
+    return false;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find an Agent — AgentOS</title>
+<meta name="description" content="Search trusted agents across every market. Local expertise, global reach.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .ag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .ag-card{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;transition:transform .18s,box-shadow .2s;display:block}
+  .ag-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  .ag-card .ph{display:flex;gap:16px;align-items:center;padding:22px}
+  .ag-card img{width:72px;height:72px;border-radius:50%;object-fit:cover}
+  .ag-card b{font-family:'Sora';font-size:18px;color:var(--navy);display:block}
+  .ag-card .role{font-size:13.5px;color:var(--royal-bright);font-weight:600}
+  .ag-card .mkt{font-size:13px;color:var(--slate)}
+  .ag-stats{display:flex;border-top:1px solid var(--line)}
+  .ag-stats div{flex:1;padding:14px;text-align:center;border-right:1px solid var(--line)}
+  .ag-stats div:last-child{border-right:none}
+  .ag-stats b{font-family:'Sora';font-size:16px;color:var(--navy);display:block}
+  .ag-stats span{font-size:11.5px;color:var(--slate)}
+  @media(max-width:900px){.ag-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:640px){.ag-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div class="page-head">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Find an Agent</div>
+    <h1>Find your agent</h1>
+    <p>80,000+ agents across 29 markets, all on one connected platform. Local expertise, global reach.</p>
+  </div>
+</div>
+<section style="padding:36px 0 90px">
+  <div class="wrap">
+    <div class="filters">
+      <input type="text" id="ag-q" placeholder="Search by name, market, or specialty…">
+      <span class="count" id="ag-count"></span>
+    </div>
+    <div class="ag-grid" id="ag-grid"></div>
+  </div>
+</section>
+<div id="site-footer"></div>
+<script src="./data.js"></script>
+<script src="./db.js"></script>
+<script src="./app.js"></script>
+<script>
+  App.initChrome("agents");
+  function card(a){
+    return `<a class="ag-card" href="agent.html?id=${a.id}">
+      <div class="ph"><img src="${a.photo}" alt="${a.name}">
+        <div><b>${a.name}</b><div class="role">${a.title}</div><div class="mkt">${a.market}</div></div></div>
+      <div class="ag-stats">
+        <div><b>${a.sales}</b><span>Sales</span></div>
+        <div><b>${a.volume}</b><span>Volume</span></div>
+        <div><b>${a.rating}★</b><span>Rating</span></div>
+      </div></a>`;
+  }
+  function render(){
+    const q = document.getElementById("ag-q").value.trim();
+    const rows = DB.agents(q);
+    document.getElementById("ag-count").textContent = rows.length + " agent" + (rows.length===1?"":"s");
+    document.getElementById("ag-grid").innerHTML = rows.map(card).join("");
+  }
+  document.getElementById("ag-q").addEventListener("input", render);
+  render();
+</script>
+</body>
+</html>
