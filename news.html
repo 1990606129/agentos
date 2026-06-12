@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News — eXp Realty</title>
+<meta name="description" content="Company news, agent stories, and market insights from eXp Realty.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .post{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;transition:transform .18s,box-shadow .2s;display:block}
+  .post:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  .post .img{aspect-ratio:16/9;overflow:hidden;background:var(--bg-soft)}
+  .post .img img{width:100%;height:100%;object-fit:cover}
+  .post .body{padding:20px 22px}
+  .post .cat{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--royal-bright)}
+  .post b{font-family:'Space Grotesk';font-size:17px;color:var(--navy);display:block;margin:8px 0 6px;line-height:1.35}
+  .post p{font-size:13.5px;color:var(--slate)}
+  .post .meta{font-size:12px;color:var(--slate-2);margin-top:12px}
+  @media(max-width:900px){.news-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div class="page-head">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a> / News</div>
+    <h1>News &amp; stories</h1>
+    <p>Company announcements, agent wins, and where the market is heading. (Demo content.)</p>
+  </div>
+</div>
+<section style="padding:48px 0 90px">
+  <div class="wrap">
+    <div class="news-grid">
+      <a class="post" href="tech.html"><div class="img"><img loading="lazy" src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80&auto=format&fit=crop" alt=""></div><div class="body"><span class="cat">Product</span><b>AGENT OS launches: six products, one system</b><p>The AI-powered operating system for every part of an agent's business is here.</p><div class="meta">Jun 2026 · 4 min read</div></div></a>
+      <a class="post" href="join.html"><div class="img"><img loading="lazy" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80&auto=format&fit=crop" alt=""></div><div class="body"><span class="cat">Company</span><b>80,000 agents, 29 markets — and counting</b><p>Inside the growth engine of the world's largest independent brokerage.</p><div class="meta">May 2026 · 6 min read</div></div></a>
+      <a class="post" href="sell.html"><div class="img"><img loading="lazy" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&auto=format&fit=crop" alt=""></div><div class="body"><span class="cat">Market</span><b>Pricing a home in 2026: what the data says</b><p>Days-on-market is shifting fast. Here's how AGENT OS reads the moment.</p><div class="meta">May 2026 · 5 min read</div></div></a>
+      <a class="post" href="luxury.html"><div class="img"><img loading="lazy" src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80&auto=format&fit=crop" alt=""></div><div class="body"><span class="cat">Luxury</span><b>eXp Luxury expands to five new markets</b><p>White-glove marketing meets a global buyer network.</p><div class="meta">Apr 2026 · 3 min read</div></div></a>
+      <a class="post" href="agents.html"><div class="img"><img loading="lazy" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80&auto=format&fit=crop" alt=""></div><div class="body"><span class="cat">Agents</span><b>From solo agent to 9-person team on one platform</b><p>How the Brooks Group scaled with eXp HUB and MIRA.</p><div class="meta">Apr 2026 · 7 min read</div></div></a>
+      <a class="post" href="investors.html"><div class="img"><img loading="lazy" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&auto=format&fit=crop" alt=""></div><div class="body"><span class="cat">Investors</span><b>Q1 2026 results: the platform model compounds</b><p>Revenue, agent growth, and the economics of an office-free brokerage.</p><div class="meta">Apr 2026 · 4 min read</div></div></a>
+    </div>
+  </div>
+</section>
+<div id="site-footer"></div>
+<script src="./data.js"></script>
+<script src="./db.js"></script>
+<script src="./app.js"></script>
+<script>App.initChrome("");</script>
+</body>
+</html>

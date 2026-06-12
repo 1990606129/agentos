@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investors — eXp Realty</title>
+<meta name="description" content="Investor relations: results, filings, and the story of an agent-owned, cloud-based brokerage.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .inv-hero{background:var(--navy);color:#fff;padding:88px 0}
+  .inv-hero h1{font-family:'Space Grotesk';font-size:clamp(34px,4.6vw,52px);font-weight:700;line-height:1.07;margin-bottom:16px;max-width:640px}
+  .inv-hero p{font-size:18px;color:#B9C4D6;max-width:540px;margin-bottom:28px}
+  .ticker{display:inline-flex;align-items:center;gap:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:14px 20px}
+  .ticker b{font-family:'Space Grotesk';font-size:22px}
+  .ticker .up{color:var(--mint);font-weight:600;font-size:14px}
+  .ticker span{font-size:12px;color:#8FA0B8}
+  .inv-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .inv-stat{border:1px solid var(--line);border-radius:var(--radius);padding:26px;text-align:center;background:#fff}
+  .inv-stat b{font-family:'Space Grotesk';font-size:30px;font-weight:700;color:var(--navy);display:block}
+  .inv-stat span{font-size:13px;color:var(--slate)}
+  .filings{display:grid;gap:12px}
+  .filing{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:12px;padding:18px 22px;background:#fff;transition:border-color .15s}
+  .filing:hover{border-color:var(--royal-bright)}
+  .filing b{font-family:'Space Grotesk';font-size:15.5px;color:var(--navy)}
+  .filing span{font-size:13px;color:var(--slate)}
+  @media(max-width:900px){.inv-stats{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<section class="inv-hero">
+  <div class="wrap">
+    <span class="kicker-light">INVESTOR RELATIONS</span>
+    <h1>An agent-owned model, built for compounding.</h1>
+    <p>No offices. No franchise debt. A platform business where the people producing revenue own the equity.</p>
+    <div class="ticker"><b>EXPI</b><span>NASDAQ · demo quote</span><b>$14.62</b><span class="up">▲ 2.4%</span></div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="sec-head"><div class="kicker">By the numbers</div><h2>Performance snapshot</h2><p>Demo figures for concept purposes.</p></div>
+    <div class="inv-stats">
+      <div class="inv-stat"><b>$4.6B</b><span>Trailing-12-month revenue</span></div>
+      <div class="inv-stat"><b>80K+</b><span>Agents worldwide</span></div>
+      <div class="inv-stat"><b>29</b><span>International markets</span></div>
+      <div class="inv-stat"><b>Fortune 500</b><span>Ranked, agent-owned</span></div>
+    </div>
+  </div>
+</section>
+<section style="background:var(--bg-soft);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head"><div class="kicker">Filings &amp; results</div><h2>Latest reports</h2></div>
+    <div class="filings">
+      <a class="filing" href="#"><div><b>Q1 2026 Earnings Release</b><br><span>Quarterly results and shareholder letter</span></div><span class="btn btn-ghost btn-sm">View →</span></a>
+      <a class="filing" href="#"><div><b>2025 Annual Report (10-K)</b><br><span>Full-year results and strategy</span></div><span class="btn btn-ghost btn-sm">View →</span></a>
+      <a class="filing" href="#"><div><b>Proxy Statement</b><br><span>Annual meeting materials</span></div><span class="btn btn-ghost btn-sm">View →</span></a>
+    </div>
+  </div>
+</section>
+<div id="site-footer"></div>
+<script src="./data.js"></script>
+<script src="./db.js"></script>
+<script src="./app.js"></script>
+<script>App.initChrome("");</script>
+</body>
+</html>

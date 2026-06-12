@@ -3,25 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MyAgentOS — Dashboard</title>
+<title>MyeXp — Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
   .dash{padding:36px 0 90px}
   .dash-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:30px}
-  .dash-head h1{font-family:'Sora';font-size:30px;font-weight:800;color:var(--navy)}
+  .dash-head h1{font-family:'Space Grotesk';font-size:30px;font-weight:800;color:var(--navy)}
   .dash-head p{color:var(--slate);font-size:15px}
   .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:24px}
   .kpi{border:1px solid var(--line);border-radius:var(--radius);padding:22px;background:#fff}
   .kpi .lab{font-size:12.5px;color:var(--slate);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
-  .kpi b{font-family:'Sora';font-size:30px;font-weight:800;color:var(--navy);display:block;margin:8px 0 4px}
+  .kpi b{font-family:'Space Grotesk';font-size:30px;font-weight:800;color:var(--navy);display:block;margin:8px 0 4px}
   .kpi .chg{font-size:12.5px;font-weight:600}
   .kpi .up{color:#16794B}.kpi .down{color:#B42318}
   .dash-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:24px}
   .panel{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:24px;margin-bottom:24px}
-  .panel h3{font-family:'Sora';font-size:18px;color:var(--navy);margin-bottom:4px}
+  .panel h3{font-family:'Space Grotesk';font-size:18px;color:var(--navy);margin-bottom:4px}
   .panel .ph-sub{font-size:13.5px;color:var(--slate);margin-bottom:18px}
   .pipeline-row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
   .pipeline-row:last-child{border-bottom:none}
@@ -35,11 +35,11 @@
   .stage.closing{background:#ECFDF3;color:#16794B}
   .stage.lead{background:#F3EFFF;color:#6B3FD4}
   .bars{display:flex;align-items:flex-end;gap:10px;height:150px;margin-top:10px}
-  .bars .bar{flex:1;background:linear-gradient(180deg,var(--royal-bright),var(--royal));border-radius:7px 7px 0 0;position:relative;min-height:8px}
+  .bars .bar{flex:1;background:var(--royal-bright);border-radius:7px 7px 0 0;position:relative;min-height:8px}
   .bars .bar span{position:absolute;bottom:-22px;left:0;right:0;text-align:center;font-size:11px;color:var(--slate)}
   /* MIRA */
   .mira{border:1px solid rgba(46,107,230,.2);border-radius:var(--radius);overflow:hidden}
-  .mira-bar{background:var(--navy);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:10px;font-family:'Sora';font-weight:600;font-size:14px}
+  .mira-bar{background:var(--navy);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:10px;font-family:'Space Grotesk';font-weight:600;font-size:14px}
   .mira-bar .dot{width:8px;height:8px;border-radius:50%;background:var(--mint)}
   .mira-body{padding:18px;display:grid;gap:12px;max-height:340px;overflow:auto;background:var(--bg-soft)}
   .mira-msg{font-size:13.5px;line-height:1.5;padding:11px 14px;border-radius:13px;max-width:90%}
@@ -83,7 +83,7 @@
       <div class="kpis">
         <div class="kpi"><div class="lab">YTD Volume</div><b>$24.8M</b><div class="chg up">▲ 18% vs last year</div></div>
         <div class="kpi"><div class="lab">Active deals</div><b>11</b><div class="chg up">▲ 3 this month</div></div>
-        <div class="kpi"><div class="lab">Commission (YTD)</div><b>$612K</b><div class="chg up">▲ 12%</div></div>
+        <div class="kpi"><div class="lab">Earnings (YTD)</div><b>$612K</b><div class="chg up">▲ 12%</div></div>
         <div class="kpi"><div class="lab">Revenue share</div><b>$18.4K</b><div class="chg up">▲ 9%</div></div>
       </div>
       <div class="dash-grid">
@@ -151,7 +151,7 @@
       if(s.includes("pipeline")) return "You have <b>11 active deals</b>. 1 is closing this week (Amara Osei), 1 in escrow (Jordan Kim, closes Jul 2), and a fresh web lead from 2h ago that hasn't been contacted. Want me to draft that first outreach?";
       if(s.includes("price")||s.includes("canyon")) return "For <b>92 Canyon Ridge Dr</b>: 14 comps within 0.5 mi support a range of <b>$1.15M–$1.21M</b>. Days-on-market is down 18% in 78746. I'd list at $1.195M to leave room for a multiple-offer push. Shall I build the CMA deck?";
       if(s.includes("follow")||s.includes("lead")) return "Drafted: “Hi! Thanks for requesting a tour of the Gulch condo — I have Saturday at 11 or 1 open and can line up two similar units nearby. Which works?” Want me to send it or tweak the tone?";
-      return "Got it. In the full product I'd pull from your MyAgentOS data and CRM to answer that. For this prototype, try the quick prompts above to see how MIRA works.";
+      return "Got it. In the full product I'd pull from your MyeXp data and CRM to answer that. For this prototype, try the quick prompts above to see how MIRA works.";
     }
   }
 </script>

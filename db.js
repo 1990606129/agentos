@@ -12,7 +12,7 @@
       agents: global.SEED_AGENTS || [],
       users: [
         // Seeded demo account so login works out of the box.
-        { id: "u_demo", name: "Demo Agent", email: "demo@agentos.demo", password: "demo1234", role: "agent", avatar: "" }
+        { id: "u_demo", name: "Demo Agent", email: "demo@exp.demo", password: "demo1234", role: "agent", avatar: "" }
       ],
       favorites: {},     // userId -> [listingId]
       savedSearches: {}, // userId -> [{q, ts}]

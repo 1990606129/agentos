@@ -1,4 +1,4 @@
-# AgentOS — Real Estate Platform Prototype
+# eXp Realty — Real Estate Platform Prototype
 
 A complete, original real-estate / agent-OS web platform built as a **marketing prototype**. Inspired by the structure of a modern brokerage tech stack (an "Agent OS" with command center, AI co-pilot, community hub, global referral, virtual world, and CRM of choice), rebuilt from scratch under neutral demo branding.
 
@@ -15,18 +15,18 @@ Deployed via GitHub Pages — temp URL added after deploy.
 | Home | `index.html` | Hero + search, featured listings, Agent OS section, agent recruiting CTA |
 | Browse listings | `listings.html` | Filter by city, type, beds, price; sort; save favorites |
 | Listing detail | `listing.html?id=` | Gallery, specs, features, map, AI offer guidance, agent card |
-| Agent OS | `tech.html` | All six products (MyAgentOS, MIRA, Community Hub, Global Referral, Virtual World, CRM of Choice) + App Hub |
+| Agent OS | `tech.html` | All six products (MyeXp, MIRA, eXp HUB, Global Referral, eXp World, CRM of Choice) + App Hub |
 | Find an agent | `agents.html` | Searchable agent directory |
 | Agent profile | `agent.html?id=` | Stats, bio, social, listings, referral CTA |
 | Sell | `sell.html` | Instant home-value estimator |
-| Join | `join.html` | Commission model, equity, academy, application form |
+| Join | `join.html` | The agent model, equity, academy, application form |
 | About | `about.html` | Company, values, careers, contact |
 | Log in / Sign up | `login.html`, `signup.html` | Working client-side auth |
-| Dashboard | `dashboard.html` | MyAgentOS command center (gated): KPIs, pipeline, production, saved homes, MIRA chat |
+| Dashboard | `dashboard.html` | MyeXp command center (gated): KPIs, pipeline, production, saved homes, MIRA chat |
 
 ## Demo login
 
-- **Email:** `demo@agentos.demo`
+- **Email:** `demo@exp.demo`
 - **Password:** `demo1234`
 
 (Or create a new account — stored locally in your browser.)
@@ -65,4 +65,4 @@ python3 -m http.server 8080
 
 ---
 
-© 2026 AgentOS — marketing prototype. Demo data, not real listings. Equal Housing Opportunity.
+© 2026 eXp Realty — marketing prototype. Demo data, not real listings. Equal Housing Opportunity.

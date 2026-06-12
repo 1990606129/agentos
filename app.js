@@ -49,29 +49,30 @@
     if (!mount) return;
     const user = global.DB ? DB.currentUser() : null;
     const links = [
-      ["index.html#listings", "Buy", "buy"],
+      ["listings.html", "Buy", "buy"],
       ["sell.html", "Sell", "sell"],
       ["agents.html", "Find an Agent", "agents"],
-      ["tech.html", "Agent OS", "tech"],
-      ["join.html", "Join", "join"]
+      ["news.html", "News", "news"],
+      ["join.html", "Join eXp", "join"]
     ];
     const navLinks = links.map(([href, label, id]) =>
       `<a href="${href}" class="${active === id ? "active" : ""}">${label}</a>`).join("");
 
     const right = user
-      ? `<a href="tech.html" class="agnt-pill"><span class="dot"></span>AGENT OS<span class="tag">LIVE</span></a>
+      ? `<a href="tech.html" class="agnt-pill"><span class="dot"></span>Agent OS</a>
          <button class="avatar-btn" onclick="location.href='dashboard.html'">
            ${user.avatar ? `<img src="${user.avatar}" alt="">` : `<span class="ph">${App.initials(user.name)}</span>`}
            <b>${user.name.split(" ")[0]}</b>
          </button>`
-      : `<a href="tech.html" class="agnt-pill"><span class="dot"></span>AGENT OS<span class="tag">NEW</span></a>
+      : `<a href="tech.html" class="agnt-pill"><span class="dot"></span>Agent OS</a>
          <a href="login.html" class="login">Log in</a>
          <a href="signup.html" class="btn btn-navy">Get started</a>`;
 
     mount.innerHTML = `
+      <div style="background:#0C2340;color:#9FC2FF;font-size:12.5px;font-weight:600;text-align:center;padding:7px 16px;letter-spacing:.02em">CONCEPT DEMO — internal eXp marketing prototype, not the official eXp Realty website</div>
       <header class="nav">
         <div class="nav-inner">
-          <a href="index.html" class="logo">Agent<span>OS</span></a>
+          <a href="index.html" class="logo">e<span>X</span>p<span class="sub">REALTY</span></a>
           <nav class="nav-links" aria-label="Primary">${navLinks}</nav>
           <div class="nav-right">${right}
             <button class="menu-btn" aria-label="Menu" onclick="App.toggleMenu()">☰</button>
@@ -94,48 +95,54 @@
     const x = '<svg viewBox="0 0 24 24"><path d="M18.2 2.2h3.3l-7.2 8.2 8.5 11.4h-6.7l-5.2-6.8-6 6.8H1.6l7.7-8.8L1 2.2h6.8l4.7 6.2zm-1.2 17.6h1.8L7.1 4.1H5.2z"/></svg>';
     const li = '<svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21H9z"/></svg>';
     const yt = '<svg viewBox="0 0 24 24"><path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 4.9 12 4.9 12 4.9s-7 0-8.9.5A3 3 0 0 0 1 7.5 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.5a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.5 31 31 0 0 0-.5-4.5zM9.8 15.3V8.7l5.7 3.3z"/></svg>';
+    const fb = '<svg viewBox="0 0 24 24"><path d="M13.5 21v-8.3h2.8l.4-3.2h-3.2V7.4c0-.9.3-1.6 1.7-1.6h1.6V3c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.5H7.6v3.2h2.8V21z"/></svg>';
     mount.innerHTML = `
       <footer>
         <div class="wrap-wide">
           <div class="foot-grid">
             <div>
-              <div class="logo">Agent<span>OS</span></div>
-              <p>The AI-powered operating system for modern real estate. One system for every part of the business.</p>
+              <div class="logo">e<span>X</span>p<span class="sub">REALTY</span></div>
+              <p>Where the pros go to grow. The world's largest independent brokerage — 80,000+ agents, 29 markets, one AI-powered platform.</p>
               <div class="socials">
-                <a href="#" aria-label="Instagram">${ig}</a>
-                <a href="#" aria-label="X">${x}</a>
-                <a href="#" aria-label="LinkedIn">${li}</a>
-                <a href="#" aria-label="YouTube">${yt}</a>
+                <a href="https://www.instagram.com/exprealty" target="_blank" rel="noopener" aria-label="Instagram">${ig}</a>
+                <a href="https://x.com/exprealty" target="_blank" rel="noopener" aria-label="X">${x}</a>
+                <a href="https://www.facebook.com/eXpRealty/" target="_blank" rel="noopener" aria-label="Facebook">${fb}</a>
+                <a href="https://www.linkedin.com/company/exp-realty" target="_blank" rel="noopener" aria-label="LinkedIn">${li}</a>
+                <a href="https://www.youtube.com/@eXpRealty" target="_blank" rel="noopener" aria-label="YouTube">${yt}</a>
               </div>
             </div>
             <div><h4>Explore</h4><ul>
               <li><a href="listings.html">Buy a home</a></li>
               <li><a href="sell.html">Sell a home</a></li>
               <li><a href="agents.html">Find an agent</a></li>
-              <li><a href="listings.html?type=Condo">Condos</a></li>
+              <li><a href="guides.html">Home Guides</a></li>
+              <li><a href="news.html">News</a></li>
+            </ul></div>
+            <div><h4>Divisions</h4><ul>
+              <li><a href="luxury.html">eXp Luxury</a></li>
+              <li><a href="commercial.html">eXp Commercial</a></li>
+              <li><a href="ranch.html">eXp Land &amp; Ranch</a></li>
+              <li><a href="tech.html">AGENT OS</a></li>
             </ul></div>
             <div><h4>Agent OS</h4><ul>
-              <li><a href="tech.html#myexp">MyAgentOS</a></li>
+              <li><a href="tech.html#myexp">MyeXp</a></li>
               <li><a href="tech.html#mira">MIRA AI</a></li>
-              <li><a href="tech.html#hub">Community Hub</a></li>
+              <li><a href="tech.html#hub">eXp HUB</a></li>
               <li><a href="tech.html#referral">Global Referral</a></li>
+              <li><a href="tech.html#world">eXp World</a></li>
               <li><a href="tech.html#crm">CRM of Choice</a></li>
-            </ul></div>
-            <div><h4>Agents</h4><ul>
-              <li><a href="join.html">Join AgentOS</a></li>
-              <li><a href="join.html#model">Commission model</a></li>
-              <li><a href="join.html#equity">Equity program</a></li>
-              <li><a href="dashboard.html">Agent login</a></li>
             </ul></div>
             <div><h4>Company</h4><ul>
               <li><a href="about.html">About</a></li>
+              <li><a href="join.html">Join eXp</a></li>
+              <li><a href="investors.html">Investors</a></li>
               <li><a href="about.html#careers">Careers</a></li>
-              <li><a href="about.html#press">Press</a></li>
               <li><a href="about.html#contact">Contact</a></li>
+              <li><a href="dashboard.html">Agent login</a></li>
             </ul></div>
           </div>
           <div class="foot-bottom">
-            <span>© 2026 AgentOS — marketing prototype. Demo data, not real listings.</span>
+            <span>© 2026 eXp Realty — internal concept demo. Demo data, not real listings. Not the production exprealty.com site.</span>
             <span class="legal"><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Accessibility</a> · Equal Housing Opportunity</span>
           </div>
         </div>

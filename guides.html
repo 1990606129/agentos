@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Guides — eXp Realty</title>
+<meta name="description" content="Plain-English guides to buying, selling, financing, and owning a home.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .guide{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:#fff;transition:transform .18s,box-shadow .2s;display:block}
+  .guide:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  .guide .ico{width:48px;height:48px;border-radius:12px;background:#EEF3FC;display:flex;align-items:center;justify-content:center;font-size:23px;margin-bottom:18px}
+  .guide b{font-family:'Space Grotesk';font-size:17px;color:var(--navy);display:block;margin-bottom:8px}
+  .guide p{font-size:14px;color:var(--slate)}
+  .guide .meta{font-size:12px;color:var(--slate-2);margin-top:14px;font-weight:600}
+  @media(max-width:900px){.guide-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<div class="page-head">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Home Guides</div>
+    <h1>Real estate, in plain English.</h1>
+    <p>No jargon, no fluff — just the decisions that matter, explained by people who do this every day.</p>
+  </div>
+</div>
+<section style="padding:48px 0 90px">
+  <div class="wrap">
+    <div class="guide-grid">
+      <a class="guide" href="listings.html"><div class="ico">🔑</div><b>The First-Time Buyer's Playbook</b><p>From pre-approval to keys: every step, every cost, and the three mistakes that sink first offers.</p><div class="meta">12 chapters · Buying</div></a>
+      <a class="guide" href="sell.html"><div class="ico">🏷️</div><b>Pricing Your Home to Sell</b><p>Why the first 14 days decide everything, and how data-driven pricing wins multiple offers.</p><div class="meta">8 chapters · Selling</div></a>
+      <a class="guide" href="sell.html"><div class="ico">🛠️</div><b>Renovate or List As-Is?</b><p>Which projects return their cost at sale — and which $40K kitchens return $12K.</p><div class="meta">6 chapters · Selling</div></a>
+      <a class="guide" href="listings.html"><div class="ico">📊</div><b>Reading a Market Like an Agent</b><p>Days-on-market, absorption rate, and the signals that say "wait" or "move now."</p><div class="meta">7 chapters · Market</div></a>
+      <a class="guide" href="agents.html"><div class="ico">🌎</div><b>Relocating Sight Unseen</b><p>How to buy in a city you've visited twice — virtual tours, local proxies, and protective contingencies.</p><div class="meta">9 chapters · Buying</div></a>
+      <a class="guide" href="ranch.html"><div class="ico">⛰️</div><b>Buying Land: The Owner's Manual</b><p>Water, access, zoning, and soil — the due-diligence list that separates a dream parcel from a money pit.</p><div class="meta">10 chapters · Land</div></a>
+    </div>
+  </div>
+</section>
+<div id="site-footer"></div>
+<script src="./data.js"></script>
+<script src="./db.js"></script>
+<script src="./app.js"></script>
+<script>App.initChrome("");</script>
+</body>
+</html>

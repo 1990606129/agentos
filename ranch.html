@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eXp Land &amp; Ranch — eXp Realty</title>
+<meta name="description" content="Acreage, working ranches, and recreational land — represented by specialists who know water rights from mineral rights.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .ranch-hero{position:relative;color:#fff;padding:120px 0;background:var(--navy-2)}
+  .ranch-hero .bg{position:absolute;inset:0;overflow:hidden}
+  .ranch-hero .bg img{width:100%;height:100%;object-fit:cover;opacity:.38}
+  .ranch-hero .wrap{position:relative}
+  .ranch-hero h1{font-family:'Space Grotesk';font-size:clamp(36px,5vw,58px);font-weight:700;line-height:1.05;margin-bottom:18px;max-width:620px}
+  .ranch-hero p{font-size:18px;color:#D5DEEB;max-width:520px;margin-bottom:30px}
+  .expertise{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .exp-item{border:1px solid var(--line);border-radius:var(--radius);padding:26px;background:#fff}
+  .exp-item .ico{font-size:26px;margin-bottom:12px}
+  .exp-item b{font-family:'Space Grotesk';font-size:15.5px;color:var(--navy);display:block;margin-bottom:6px}
+  .exp-item p{font-size:13.5px;color:var(--slate)}
+  @media(max-width:900px){.expertise{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<section class="ranch-hero">
+  <div class="bg"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80&auto=format&fit=crop" alt=""></div>
+  <div class="wrap">
+    <span class="kicker-light">⛰ eXp LAND &amp; RANCH</span>
+    <h1>Land is a different language. We speak it.</h1>
+    <p>Working ranches, recreational acreage, timber, and development land — represented by specialists who know water rights from mineral rights and a section from a survey foot.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <a href="agents.html" class="btn btn-white">Find a land specialist</a>
+      <a href="#land-listings" class="btn btn-ghost" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.35)">View land &amp; ranch listings</a>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="sec-head" style="margin:0 auto 44px;text-align:center"><div class="kicker">Expertise</div><h2>The questions most agents can't answer.</h2><p style="margin:0 auto">Land transactions live and die on details that never come up in a subdivision. Our specialists work them every day.</p></div>
+    <div class="expertise">
+      <div class="exp-item"><div class="ico">💧</div><b>Water &amp; wells</b><p>Riparian rights, irrigation allocations, well yield, and what they mean for value.</p></div>
+      <div class="exp-item"><div class="ico">🐂</div><b>Working ranches</b><p>Carrying capacity, grazing leases, fencing, and outbuildings that actually pencil.</p></div>
+      <div class="exp-item"><div class="ico">🦌</div><b>Recreational land</b><p>Hunting leases, habitat, access easements, and year-round usability.</p></div>
+      <div class="exp-item"><div class="ico">📐</div><b>Development &amp; ag</b><p>Zoning, entitlements, soil, mineral rights, and 1031 exchange timelines.</p></div>
+    </div>
+  </div>
+</section>
+<section id="land-listings" style="background:var(--bg-soft);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head row">
+      <div><div class="kicker">On the market</div><h2>Current land &amp; ranch listings</h2><p>Acreage and ranch properties live on the platform now.</p></div>
+      <a href="listings.html" class="btn btn-ghost">All listings</a>
+    </div>
+    <div class="cards" id="ranch-grid"></div>
+  </div>
+</section>
+<div id="site-footer"></div>
+<script src="./data.js"></script>
+<script src="./db.js"></script>
+<script src="./app.js"></script>
+<script>
+  App.initChrome("buy");
+  const rows = DB.listings().filter(l => l.type==="Ranch" || (l.lot && parseFloat(l.lot) >= 0.5));
+  document.getElementById("ranch-grid").innerHTML =
+    (rows.length ? rows : DB.listings({sort:"high"}).slice(0,3)).map(l=>App.listingCard(l)).join("");
+</script>
+</body>
+</html>

@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agent OS — Built for the way agents work</title>
-<meta name="description" content="The AI-Powered Agent Operating System — MyAgentOS, MIRA, Community Hub, Global Referral, Virtual World, and CRM of Choice. One system. Every part of your business.">
+<meta name="description" content="The AI-Powered Agent Operating System — MyeXp, MIRA, eXp HUB, Global Referral, eXp World, and CRM of Choice. One system. Every part of your business.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-  .tech-hero{background:var(--navy);background-image:radial-gradient(ellipse 70% 60% at 75% -10%,rgba(46,107,230,.35),transparent 60%),radial-gradient(ellipse 60% 50% at 5% 110%,rgba(27,72,155,.45),transparent 60%);color:#fff;padding:96px 0 90px;text-align:center;overflow:hidden}
+  .tech-hero{background:var(--navy);color:#fff;padding:96px 0 90px;text-align:center;overflow:hidden}
   .tech-hero .kicker-light{margin:0 auto 24px}
-  .tech-hero h1{font-family:'Sora';font-size:clamp(40px,6vw,72px);font-weight:800;line-height:1.02;letter-spacing:-.03em;margin-bottom:22px}
+  .tech-hero h1{font-family:'Space Grotesk';font-size:clamp(40px,6vw,72px);font-weight:800;line-height:1.02;letter-spacing:-.03em;margin-bottom:22px}
   .tech-hero p{font-size:19px;color:#B9C4D6;max-width:680px;margin:0 auto 34px}
   .prodnav{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:40px}
   .prodnav a{font-size:13.5px;font-weight:600;color:#CBD6E6;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);padding:9px 16px;border-radius:99px;transition:all .15s}
@@ -22,7 +22,7 @@
   .prod:nth-child(even) .prod-grid{direction:rtl}
   .prod:nth-child(even) .prod-grid > *{direction:ltr}
   .prod .kicker{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--royal-bright);margin-bottom:14px}
-  .prod h2{font-family:'Sora';font-size:clamp(28px,3.4vw,42px);font-weight:800;color:var(--navy);line-height:1.12;margin-bottom:18px}
+  .prod h2{font-family:'Space Grotesk';font-size:clamp(28px,3.4vw,42px);font-weight:800;color:var(--navy);line-height:1.12;margin-bottom:18px}
   .prod p.lede{font-size:17px;color:var(--slate);margin-bottom:24px}
   .prod ul{list-style:none;display:grid;gap:12px;margin-bottom:26px}
   .prod ul li{font-size:15.5px;color:var(--ink);display:flex;gap:11px;align-items:flex-start}
@@ -31,13 +31,13 @@
   .prod-visual img{width:100%;height:100%;object-fit:cover}
   .badges{display:flex;gap:12px;flex-wrap:wrap}
   .store{display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:#fff;border-radius:12px;padding:10px 18px;font-size:13px}
-  .store b{font-family:'Sora';font-size:15px;display:block;line-height:1.1}
+  .store b{font-family:'Space Grotesk';font-size:15px;display:block;line-height:1.1}
   .store span{font-size:11px;color:#B9C4D6}
   .store:hover{background:var(--royal)}
   .crm-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
   .crm-card{border:1px solid var(--line);border-radius:var(--radius);padding:20px;text-align:center;transition:border-color .2s,box-shadow .2s}
   .crm-card:hover{border-color:#C3D2EE;box-shadow:var(--shadow-sm)}
-  .crm-card b{font-family:'Sora';font-size:17px;color:var(--navy);display:block;margin-bottom:4px}
+  .crm-card b{font-family:'Space Grotesk';font-size:17px;color:var(--navy);display:block;margin-bottom:4px}
   .crm-card span{font-size:13px;color:var(--slate)}
   /* App hub */
   .apphub{background:var(--bg-soft)}
@@ -45,13 +45,13 @@
   .app{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;gap:16px;align-items:flex-start;transition:transform .18s,box-shadow .2s}
   .app:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
   .app .ico{flex:none;width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:24px;background:#EEF3FC}
-  .app b{font-family:'Sora';font-size:16px;color:var(--navy);display:block;margin-bottom:3px}
+  .app b{font-family:'Space Grotesk';font-size:16px;color:var(--navy);display:block;margin-bottom:3px}
   .app p{font-size:13.5px;color:var(--slate);line-height:1.5}
   .app .open{font-size:12.5px;font-weight:600;color:var(--royal-bright);margin-top:8px;display:inline-block}
   .whygrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
   .why{padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
-  .why .n{font-family:'Sora';font-size:13px;font-weight:800;color:#fff;background:var(--royal-bright);width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
-  .why b{font-family:'Sora';font-size:16px;color:var(--navy);display:block;margin-bottom:8px}
+  .why .n{font-family:'Space Grotesk';font-size:13px;font-weight:800;color:#fff;background:var(--royal-bright);width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .why b{font-family:'Space Grotesk';font-size:16px;color:var(--navy);display:block;margin-bottom:8px}
   .why p{font-size:14px;color:var(--slate)}
   @media(max-width:900px){.prod-grid{grid-template-columns:1fr!important;direction:ltr!important;gap:36px}.app-grid,.whygrid,.crm-cards{grid-template-columns:1fr}.whygrid{grid-template-columns:1fr 1fr}}
 </style>
@@ -63,25 +63,25 @@
   <div class="wrap">
     <span class="kicker-light">⚡ AGENT OS</span>
     <h1>Built for the way<br>agents work.</h1>
-    <p>MyAgentOS, MIRA, Community Hub, Global Referral, Virtual World, and CRM of Choice. Six products. One system. Every part of your business, connected and accelerated by AI.</p>
+    <p>MyeXp, MIRA, eXp HUB, Global Referral, eXp World, and CRM of Choice. Six products. One system. Every part of your business, connected and accelerated by AI.</p>
     <div class="badges" style="justify-content:center">
-      <a href="join.html" class="btn btn-white btn-lg">Join AgentOS</a>
+      <a href="join.html" class="btn btn-white btn-lg">Join eXp</a>
       <a href="#myexp" class="btn btn-ghost btn-lg" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.3)">See the system</a>
     </div>
     <nav class="prodnav">
-      <a href="#myexp">MyAgentOS</a><a href="#mira">MIRA</a><a href="#hub">Community Hub</a>
-      <a href="#referral">Global Referral</a><a href="#world">Virtual World</a><a href="#crm">CRM of Choice</a><a href="#apps">App Hub</a>
+      <a href="#myexp">MyeXp</a><a href="#mira">MIRA</a><a href="#hub">eXp HUB</a>
+      <a href="#referral">Global Referral</a><a href="#world">eXp World</a><a href="#crm">CRM of Choice</a><a href="#apps">App Hub</a>
     </nav>
   </div>
 </section>
 
-<!-- 1. MyAgentOS -->
+<!-- 1. MyeXp -->
 <section class="prod" id="myexp">
   <div class="wrap prod-grid">
     <div>
       <div class="kicker">Command Center</div>
       <h2>Your business, on one screen.</h2>
-      <p class="lede">Real estate doesn't happen at a desk. MyAgentOS puts your entire business in your pocket — production, pipeline, commissions, tools, and training, surfaced the moment you need them. The dashboard that turns dreams into done.</p>
+      <p class="lede">Real estate doesn't happen at a desk. MyeXp puts your entire business in your pocket — production, pipeline, earnings, tools, and training, surfaced the moment you need them. The dashboard that turns dreams into done.</p>
       <ul>
         <li>Real-time production, pipeline, and earnings at a glance</li>
         <li>Express Payments and revenue share tracking</li>
@@ -93,7 +93,7 @@
         <a href="dashboard.html" class="btn btn-royal">Open dashboard demo →</a>
       </div>
     </div>
-    <div class="prod-visual"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1000&q=80&auto=format&fit=crop" alt="MyAgentOS dashboard"></div>
+    <div class="prod-visual"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1000&q=80&auto=format&fit=crop" alt="MyeXp dashboard"></div>
   </div>
 </section>
 
@@ -106,7 +106,7 @@
       <p class="lede">MIRA isn't a chatbot. It's an AI teammate who already knows your business — answering questions, surfacing insights, and keeping you on track toward every goal.</p>
       <ul>
         <li>Trained on real estate workflows and brokerage policies</li>
-        <li>Fully integrated with your MyAgentOS data</li>
+        <li>Fully integrated with your MyeXp data</li>
         <li>Available 24/7 on web and mobile</li>
       </ul>
       <a href="dashboard.html#mira" class="btn btn-navy">Meet MIRA →</a>
@@ -115,13 +115,13 @@
   </div>
 </section>
 
-<!-- 3. Community Hub -->
+<!-- 3. eXp HUB -->
 <section class="prod" id="hub">
   <div class="wrap prod-grid">
     <div>
       <div class="kicker">Community</div>
       <h2>The largest agent community on earth, in your pocket.</h2>
-      <p class="lede">Real estate feels local. Your network shouldn't be. Community Hub connects you to 80,000+ agents across 29 markets — groups, messages, live conversations, and a referral network that works while you do.</p>
+      <p class="lede">Real estate feels local. Your network shouldn't be. eXp HUB connects you to 80,000+ agents across 29 markets — groups, messages, live conversations, and a referral network that works while you do.</p>
       <ul>
         <li>80,000+ agents across 29 international markets</li>
         <li>Specialty groups for luxury, commercial, and affinity communities</li>
@@ -129,7 +129,7 @@
       </ul>
       <a href="#" class="btn btn-navy">Step inside the Hub →</a>
     </div>
-    <div class="prod-visual"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1000&q=80&auto=format&fit=crop" alt="Community Hub feed"></div>
+    <div class="prod-visual"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1000&q=80&auto=format&fit=crop" alt="eXp HUB feed"></div>
   </div>
 </section>
 
@@ -151,11 +151,11 @@
   </div>
 </section>
 
-<!-- 5. Virtual World -->
+<!-- 5. eXp World -->
 <section class="prod" id="world">
   <div class="wrap prod-grid">
     <div>
-      <div class="kicker">Virtual World</div>
+      <div class="kicker">eXp World</div>
       <h2>Your office. Everywhere.</h2>
       <p class="lede">Step into a virtual world where teams, brokers, and support are always on — 24/7, from any device, anywhere on the planet. Get real answers from real people, instantly, so you can focus on what matters most: your clients.</p>
       <ul>
@@ -165,7 +165,7 @@
       </ul>
       <a href="#" class="btn btn-navy">Visit the world →</a>
     </div>
-    <div class="prod-visual"><img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=1000&q=80&auto=format&fit=crop" alt="Virtual World"></div>
+    <div class="prod-visual"><img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=1000&q=80&auto=format&fit=crop" alt="eXp World"></div>
   </div>
 </section>
 
@@ -175,7 +175,7 @@
     <div>
       <div class="kicker">Choice</div>
       <h2>Pick the CRM that works the way you do.</h2>
-      <p class="lede">Other brokerages make you use their CRM. AgentOS gives you the choice. Three best-in-class, AI-powered CRMs — all included. Pick the one that fits how you actually work. AgentOS handles the rest.</p>
+      <p class="lede">Other brokerages make you use their CRM. eXp Realty gives you the choice. Three best-in-class, AI-powered CRMs — all included. Pick the one that fits how you actually work. eXp Realty handles the rest.</p>
       <div class="crm-cards">
         <a href="#" class="crm-card"><b>BoldTrail</b><span>All-in-one lead engine</span></a>
         <a href="#" class="crm-card"><b>Lofty</b><span>AI automation first</span></a>
@@ -200,11 +200,11 @@
       <p style="margin:0 auto">Launch any part of AGENT OS from a single hub — pulled together so nothing lives in a tab you forgot to open.</p>
     </div>
     <div class="app-grid">
-      <a class="app" href="dashboard.html"><div class="ico">📊</div><div><b>MyAgentOS</b><p>Production, pipeline, commissions, and earnings — live.</p><span class="open">Open app →</span></div></a>
+      <a class="app" href="dashboard.html"><div class="ico">📊</div><div><b>MyeXp</b><p>Production, pipeline, and earnings — live.</p><span class="open">Open app →</span></div></a>
       <a class="app" href="dashboard.html#mira"><div class="ico">🤖</div><div><b>MIRA AI</b><p>Your 24/7 co-pilot trained on your business.</p><span class="open">Open app →</span></div></a>
-      <a class="app" href="#hub"><div class="ico">💬</div><div><b>Community Hub</b><p>80,000+ agents, groups, and live conversations.</p><span class="open">Open app →</span></div></a>
+      <a class="app" href="#hub"><div class="ico">💬</div><div><b>eXp HUB</b><p>80,000+ agents, groups, and live conversations.</p><span class="open">Open app →</span></div></a>
       <a class="app" href="agents.html"><div class="ico">🌐</div><div><b>Global Referral</b><p>Search colleagues and send referrals worldwide.</p><span class="open">Open app →</span></div></a>
-      <a class="app" href="#world"><div class="ico">🏢</div><div><b>Virtual World</b><p>Live support and training from anywhere.</p><span class="open">Open app →</span></div></a>
+      <a class="app" href="#world"><div class="ico">🏢</div><div><b>eXp World</b><p>Live support and training from anywhere.</p><span class="open">Open app →</span></div></a>
       <a class="app" href="#crm"><div class="ico">📇</div><div><b>CRM of Choice</b><p>BoldTrail, Lofty, or Cloze — your pick, included.</p><span class="open">Open app →</span></div></a>
       <a class="app" href="listings.html"><div class="ico">🏠</div><div><b>Listings & Search</b><p>Every active listing with AI-powered matching.</p><span class="open">Open app →</span></div></a>
       <a class="app" href="sell.html"><div class="ico">📈</div><div><b>Home Value</b><p>Instant data-backed pricing for any address.</p><span class="open">Open app →</span></div></a>
@@ -216,7 +216,7 @@
 <!-- WHY -->
 <section>
   <div class="wrap">
-    <div class="sec-head" style="margin:0 auto 48px;text-align:center"><div class="kicker">What makes it AgentOS</div><h2>Why agents choose AGENT OS.</h2></div>
+    <div class="sec-head" style="margin:0 auto 48px;text-align:center"><div class="kicker">What makes it eXp Realty</div><h2>Why agents choose AGENT OS.</h2></div>
     <div class="whygrid">
       <div class="why"><div class="n">1</div><b>AI that works together</b><p>Multiple AI-powered platforms, each tuned for the job and connected across all of them.</p></div>
       <div class="why"><div class="n">2</div><b>Global by design</b><p>80,000+ agents. 29 markets. The most powerful referral network in residential real estate.</p></div>
@@ -224,7 +224,7 @@
       <div class="why"><div class="n">4</div><b>Business infrastructure</b><p>Built for agents growing real businesses, not just closing the next deal.</p></div>
     </div>
     <div style="text-align:center;margin-top:48px">
-      <a href="join.html" class="btn btn-navy btn-lg">Join AgentOS</a>
+      <a href="join.html" class="btn btn-navy btn-lg">Join eXp</a>
     </div>
   </div>
 </section>

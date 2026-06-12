@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eXp Luxury — eXp Realty</title>
+<meta name="description" content="Exceptional homes, marketed exceptionally. The eXp Luxury program for distinctive properties.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .lux-hero{background:var(--navy-2);color:#fff;padding:96px 0;text-align:center}
+  .lux-hero .kicker-light{margin:0 auto 22px}
+  .lux-hero h1{font-family:'Space Grotesk';font-size:clamp(38px,5vw,60px);font-weight:700;line-height:1.05;margin-bottom:18px}
+  .lux-hero p{font-size:18px;color:#B9C4D6;max-width:600px;margin:0 auto 30px}
+  .lux-feats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .lux-feat{border:1px solid var(--line);border-radius:var(--radius);padding:30px;background:#fff}
+  .lux-feat .ico{width:46px;height:46px;border-radius:12px;background:#EEF3FC;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+  .lux-feat b{font-family:'Space Grotesk';font-size:17px;color:var(--navy);display:block;margin-bottom:8px}
+  .lux-feat p{font-size:14.5px;color:var(--slate)}
+  @media(max-width:900px){.lux-feats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<section class="lux-hero">
+  <div class="wrap">
+    <span class="kicker-light">✦ eXp LUXURY</span>
+    <h1>Exceptional homes,<br>marketed exceptionally.</h1>
+    <p>A dedicated program for distinctive properties — white-glove marketing, a global network of luxury specialists, and AGENT OS intelligence behind every listing.</p>
+    <a href="agents.html" class="btn btn-white btn-lg">Find a luxury specialist</a>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="sec-head row">
+      <div><div class="kicker">The collection</div><h2>Current luxury listings</h2><p>Hand-selected homes above $1.2M across our markets.</p></div>
+      <a href="listings.html" class="btn btn-ghost">All listings</a>
+    </div>
+    <div class="cards" id="lux-grid"></div>
+  </div>
+</section>
+<section style="background:var(--bg-soft);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head" style="margin:0 auto 44px;text-align:center"><div class="kicker">The program</div><h2>What eXp Luxury delivers.</h2></div>
+    <div class="lux-feats">
+      <div class="lux-feat"><div class="ico">📸</div><b>Cinematic marketing</b><p>Editorial photography, film, and placement in global luxury media for every qualifying listing.</p></div>
+      <div class="lux-feat"><div class="ico">🌐</div><b>Global buyer reach</b><p>Your listing in front of high-net-worth buyers through a network spanning 29 markets.</p></div>
+      <div class="lux-feat"><div class="ico">🤝</div><b>Certified specialists</b><p>Agents trained and certified in luxury positioning, negotiation, and discretion.</p></div>
+    </div>
+  </div>
+</section>
+<div id="site-footer"></div>
+<script src="./data.js"></script>
+<script src="./db.js"></script>
+<script src="./app.js"></script>
+<script>
+  App.initChrome("buy");
+  document.getElementById("lux-grid").innerHTML =
+    DB.listings({minPrice:1200000, sort:"high"}).map(l=>App.listingCard(l)).join("");
+</script>
+</body>
+</html>
