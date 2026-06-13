@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>eXp Realty — Make Bold Moves</title>
-<meta name="description" content="Search every listing, sell with data on your side, and work with agents powered by the most advanced platform in real estate.">
+<meta name="description" content="Search smarter, sell with data on your side, and work with agents backed by AGENT OS — the AI platform behind the world’s largest independent brokerage.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=9">
+<link rel="stylesheet" href="styles.css?v=10">
 <style>
   .hero{padding:88px 0 72px;position:relative;overflow:hidden}
   .hero::after{content:'';position:absolute;top:-200px;right:-180px;width:560px;height:560px;background:transparent;pointer-events:none}
@@ -76,9 +76,9 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">A modern, AI-native real estate platform</span>
+      <span class="eyebrow">80,000+ agents · 29 countries · One platform</span>
       <h1>Make <em>bold</em> moves.<br>Move with confidence.</h1>
-      <p class="lede">Search every listing, sell with data on your side, and work with agents powered by the most advanced platform in real estate.</p>
+      <p class="lede">Search smarter, sell with data on your side, and work with agents backed by AGENT OS — the AI platform behind the world’s largest independent brokerage.</p>
       <form class="search" role="search" id="hero-search" onsubmit="return heroSearch(event)">
         <div class="search-tabs">
           <button class="active" type="button" data-tab="Buy">Buy</button>
@@ -92,7 +92,7 @@
         </div>
       </form>
       <div class="hero-meta">
-        <div><b id="m-listings">—</b><span>Active listings</span></div>
+        <div><b>#1</b><span>Independent brokerage</span></div>
         <div><b>80K+</b><span>Agents worldwide</span></div>
         <div><b>29</b><span>Markets</span></div>
       </div>
@@ -129,8 +129,8 @@
     <div class="sec-head row">
       <div>
         <div class="kicker">Featured listings</div>
-        <h2>Homes worth moving for</h2>
-        <p>Fresh on the market this week, hand-picked from across our markets.</p>
+        <h2>Homes worth a bold move</h2>
+        <p>New to market this week, hand-picked across our markets.</p>
       </div>
       <a href="listings.html" class="btn btn-ghost">Browse all listings</a>
     </div>
@@ -210,15 +210,14 @@
 
 <div id="site-footer"></div>
 
-<script src="./data.js?v=9"></script>
-<script src="./db.js?v=9"></script>
-<script src="./app.js?v=9"></script>
+<script src="./data.js?v=10"></script>
+<script src="./db.js?v=10"></script>
+<script src="./app.js?v=10"></script>
 <script>
   App.initChrome("buy");
   // Featured = first 6 listings
   document.getElementById("featured").innerHTML =
     DB.listings().slice(0, 6).map(l => App.listingCard(l)).join("");
-  document.getElementById("m-listings").textContent = DB.listings().length.toLocaleString() + "+";
   // Search tabs
   document.querySelectorAll(".search-tabs button").forEach(btn => {
     btn.addEventListener("click", () => {

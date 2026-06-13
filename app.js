@@ -69,7 +69,7 @@
          <a href="signup.html" class="btn btn-navy">Get started</a>`;
 
     mount.innerHTML = `
-      <div class="demo-banner">CONCEPT DEMO — internal eXp marketing prototype, not the official eXp Realty website</div>
+      <div class="demo-banner">INTERNAL CONCEPT · DEMO DATA</div>
       <header class="nav">
         <div class="nav-inner">
           <a href="index.html" class="logo">e<span>X</span>p<span class="sub">REALTY</span></a>
@@ -146,7 +146,7 @@
             </ul></div>
           </div>
           <div class="foot-bottom">
-            <span>© 2026 eXp Realty — internal concept demo. Demo data, not real listings. Not the production exprealty.com site.</span>
+            <span>© 2026 eXp Realty · Internal concept · Demo data, not real listings.</span>
             <span class="legal"><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Accessibility</a> · Equal Housing Opportunity</span>
           </div>
         </div>
