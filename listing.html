@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=7">
+<link rel="stylesheet" href="styles.css?v=8">
 <style>
   .pdp{padding:28px 0 90px}
   .gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;border-radius:var(--radius-lg);overflow:hidden;margin-bottom:32px;height:460px}
@@ -60,16 +60,16 @@
 <div class="pdp"><div class="wrap" id="pdp"></div></div>
 <div id="site-footer"></div>
 
-<script src="./data.js?v=7"></script>
-<script src="./db.js?v=7"></script>
-<script src="./app.js?v=7"></script>
+<script src="./data.js?v=8"></script>
+<script src="./db.js?v=8"></script>
+<script src="./app.js?v=8"></script>
 <script>
   App.initChrome("buy");
   const id = App.qs("id");
   const l = DB.listing(id);
   const root = document.getElementById("pdp");
   if (!l) {
-    root.innerHTML = '<div class="empty"><div class="ico">🏚️</div><h3 style="color:var(--navy)">Listing not found</h3><p><a href="listings.html" style="color:var(--royal-bright)">Back to all listings</a></p></div>';
+    root.innerHTML = '<div class="empty"><div class="ico"><svg class="i" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 11.5 12 4.5l8.5 7M5.5 10.2V19h13v-8.8"/></svg></div><h3 style="color:var(--navy)">Listing not found</h3><p><a href="listings.html" style="color:var(--royal-bright)">Back to all listings</a></p></div>';
   } else {
     document.title = `${l.address}, ${l.city} — eXp Realty`;
     const agent = DB.agent(l.agent);
@@ -113,7 +113,7 @@
         </div>
         <aside class="side">
           <div class="offer-box">
-            <span class="chip">⚡ AGENT OS</span>
+            <span class="chip">AGENT OS</span>
             <h4>Smart offer guidance</h4>
             <div class="meta">Based on 14 comps within 0.5 mi</div>
             <div class="range">${App.fmtPriceShort(low)}–${App.fmtPriceShort(high)}</div>
