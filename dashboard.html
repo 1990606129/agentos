@@ -6,22 +6,22 @@
 <title>MyeXp — Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=10">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=13">
 <style>
   .dash{padding:36px 0 90px}
   .dash-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:30px}
-  .dash-head h1{font-family:'Space Grotesk';font-size:30px;font-weight:800;color:var(--navy)}
+  .dash-head h1{font-family:'Plus Jakarta Sans';font-size:30px;font-weight:800;color:var(--navy)}
   .dash-head p{color:var(--slate);font-size:15px}
   .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:24px}
   .kpi{border:1px solid var(--line);border-radius:var(--radius);padding:22px;background:#fff}
   .kpi .lab{font-size:12.5px;color:var(--slate);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
-  .kpi b{font-family:'Space Grotesk';font-size:30px;font-weight:800;color:var(--navy);display:block;margin:8px 0 4px}
+  .kpi b{font-family:'Plus Jakarta Sans';font-size:30px;font-weight:800;color:var(--navy);display:block;margin:8px 0 4px}
   .kpi .chg{font-size:12.5px;font-weight:600}
   .kpi .up{color:#16794B}.kpi .down{color:#B42318}
   .dash-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:24px}
   .panel{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:24px;margin-bottom:24px}
-  .panel h3{font-family:'Space Grotesk';font-size:18px;color:var(--navy);margin-bottom:4px}
+  .panel h3{font-family:'Plus Jakarta Sans';font-size:18px;color:var(--navy);margin-bottom:4px}
   .panel .ph-sub{font-size:13.5px;color:var(--slate);margin-bottom:18px}
   .pipeline-row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
   .pipeline-row:last-child{border-bottom:none}
@@ -39,7 +39,7 @@
   .bars .bar span{position:absolute;bottom:-22px;left:0;right:0;text-align:center;font-size:11px;color:var(--slate)}
   /* MIRA */
   .mira{border:1px solid rgba(46,107,230,.2);border-radius:var(--radius);overflow:hidden}
-  .mira-bar{background:var(--navy);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:10px;font-family:'Space Grotesk';font-weight:600;font-size:14px}
+  .mira-bar{background:var(--navy);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:10px;font-family:'Plus Jakarta Sans';font-weight:600;font-size:14px}
   .mira-bar .dot{width:8px;height:8px;border-radius:50%;background:var(--mint)}
   .mira-body{padding:18px;display:grid;gap:12px;max-height:340px;overflow:auto;background:var(--bg-soft)}
   .mira-msg{font-size:13.5px;line-height:1.5;padding:11px 14px;border-radius:13px;max-width:90%}
@@ -68,10 +68,10 @@
 <div id="site-nav"></div>
 <div class="dash"><div class="wrap" id="dash"></div></div>
 <div id="site-footer"></div>
-<script src="./data.js?v=10"></script>
-<script src="./db.js?v=10"></script>
-<script src="./app.js?v=10"></script>
-<script src="./auth.js?v=10"></script>
+<script src="./data.js?v=13"></script>
+<script src="./db.js?v=13"></script>
+<script src="./app.js?v=13"></script>
+<script src="./auth.js?v=13"></script>
 <script>
   App.initChrome("");
   const user = Auth.require("dashboard.html");

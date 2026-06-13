@@ -6,8 +6,8 @@
 <title>Listing — eXp Realty</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=10">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=13">
 <style>
   .pdp{padding:28px 0 90px}
   .gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;border-radius:var(--radius-lg);overflow:hidden;margin-bottom:32px;height:460px}
@@ -15,15 +15,15 @@
   .gallery img:hover{opacity:.92}
   .gallery .main{grid-row:1/3}
   .pdp-grid{display:grid;grid-template-columns:1fr 360px;gap:40px;align-items:start}
-  .pdp h1{font-family:'Space Grotesk';font-size:34px;font-weight:800;color:var(--navy);margin-bottom:6px}
+  .pdp h1{font-family:'Plus Jakarta Sans';font-size:34px;font-weight:800;color:var(--navy);margin-bottom:6px}
   .pdp .sub{font-size:16px;color:var(--slate);margin-bottom:18px}
-  .pdp-price{font-family:'Space Grotesk';font-size:34px;font-weight:800;color:var(--royal-bright)}
+  .pdp-price{font-family:'Plus Jakarta Sans';font-size:34px;font-weight:800;color:var(--royal-bright)}
   .keyspecs{display:flex;gap:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:24px 0}
   .keyspecs div{flex:1;padding:18px 20px;border-right:1px solid var(--line)}
   .keyspecs div:last-child{border-right:none}
-  .keyspecs b{font-family:'Space Grotesk';font-size:20px;font-weight:700;color:var(--navy);display:block}
+  .keyspecs b{font-family:'Plus Jakarta Sans';font-size:20px;font-weight:700;color:var(--navy);display:block}
   .keyspecs span{font-size:13px;color:var(--slate)}
-  .pdp h3{font-family:'Space Grotesk';font-size:20px;font-weight:700;color:var(--navy);margin:32px 0 12px}
+  .pdp h3{font-family:'Plus Jakarta Sans';font-size:20px;font-weight:700;color:var(--navy);margin:32px 0 12px}
   .pdp p.desc{font-size:16px;color:var(--ink);line-height:1.7}
   .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;margin-top:8px}
   .feat-grid li{list-style:none;font-size:15px;color:var(--ink);padding:9px 0;border-bottom:1px solid var(--line);display:flex;gap:9px;align-items:center}
@@ -34,12 +34,12 @@
   .agent-card{border:1px solid var(--line);border-radius:var(--radius);padding:22px;background:#fff;box-shadow:var(--shadow-sm)}
   .agent-card .top{display:flex;gap:14px;align-items:center;margin-bottom:16px}
   .agent-card img{width:56px;height:56px;border-radius:50%;object-fit:cover}
-  .agent-card b{font-family:'Space Grotesk';font-size:16px;color:var(--navy);display:block}
+  .agent-card b{font-family:'Plus Jakarta Sans';font-size:16px;color:var(--navy);display:block}
   .agent-card span{font-size:13px;color:var(--slate)}
   .offer-box{border:1px solid rgba(46,107,230,.25);background:#F4F8FF;border-radius:var(--radius);padding:20px}
-  .offer-box .chip{display:inline-flex;align-items:center;gap:6px;font-family:'Space Grotesk';font-size:11px;font-weight:700;color:#fff;background:var(--royal-bright);padding:4px 10px;border-radius:99px;margin-bottom:12px}
-  .offer-box h4{font-family:'Space Grotesk';font-size:17px;color:var(--navy);margin-bottom:6px}
-  .offer-box .range{font-family:'Space Grotesk';font-size:24px;font-weight:800;color:var(--navy);margin:8px 0}
+  .offer-box .chip{display:inline-flex;align-items:center;gap:6px;font-family:'Plus Jakarta Sans';font-size:11px;font-weight:700;color:#fff;background:var(--royal-bright);padding:4px 10px;border-radius:99px;margin-bottom:12px}
+  .offer-box h4{font-family:'Plus Jakarta Sans';font-size:17px;color:var(--navy);margin-bottom:6px}
+  .offer-box .range{font-family:'Plus Jakarta Sans';font-size:24px;font-weight:800;color:var(--navy);margin:8px 0}
   .offer-box .meta{font-size:13px;color:var(--slate);margin-bottom:14px}
   @media(max-width:900px){.gallery{grid-template-columns:1fr 1fr;height:auto}.gallery .main{grid-row:auto;grid-column:1/3;height:280px}.pdp-grid{grid-template-columns:1fr}.side{position:static}}
 
@@ -60,9 +60,9 @@
 <div class="pdp"><div class="wrap" id="pdp"></div></div>
 <div id="site-footer"></div>
 
-<script src="./data.js?v=10"></script>
-<script src="./db.js?v=10"></script>
-<script src="./app.js?v=10"></script>
+<script src="./data.js?v=13"></script>
+<script src="./db.js?v=13"></script>
+<script src="./app.js?v=13"></script>
 <script>
   App.initChrome("buy");
   const id = App.qs("id");
@@ -133,7 +133,7 @@
           </div>` : ""}
         </aside>
       </div>
-      <h3 style="font-family:'Space Grotesk';font-size:22px;color:var(--navy);margin:60px 0 22px">More homes in ${l.city}</h3>
+      <h3 style="font-family:'Plus Jakarta Sans';font-size:22px;color:var(--navy);margin:60px 0 22px">More homes in ${l.city}</h3>
       <div class="cards" id="more"></div>`;
 
     document.getElementById("more").innerHTML =

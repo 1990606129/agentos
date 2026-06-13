@@ -7,19 +7,19 @@
 <meta name="description" content="Acreage, working ranches, and recreational land — represented by specialists who know water rights from mineral rights.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=10">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=13">
 <style>
   .ranch-hero{position:relative;color:#fff;padding:120px 0;background:var(--navy-2)}
   .ranch-hero .bg{position:absolute;inset:0;overflow:hidden}
   .ranch-hero .bg img{width:100%;height:100%;object-fit:cover;opacity:.38}
   .ranch-hero .wrap{position:relative}
-  .ranch-hero h1{font-family:'Space Grotesk';font-size:clamp(36px,5vw,58px);font-weight:700;line-height:1.05;margin-bottom:18px;max-width:620px}
+  .ranch-hero h1{font-family:'Plus Jakarta Sans';font-size:clamp(36px,5vw,58px);font-weight:700;line-height:1.05;margin-bottom:18px;max-width:620px}
   .ranch-hero p{font-size:18px;color:#D5DEEB;max-width:520px;margin-bottom:30px}
   .expertise{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
   .exp-item{border:1px solid var(--line);border-radius:var(--radius);padding:26px;background:#fff}
   .exp-item .ico{font-size:26px;margin-bottom:12px}
-  .exp-item b{font-family:'Space Grotesk';font-size:15.5px;color:var(--navy);display:block;margin-bottom:6px}
+  .exp-item b{font-family:'Plus Jakarta Sans';font-size:15.5px;color:var(--navy);display:block;margin-bottom:6px}
   .exp-item p{font-size:13.5px;color:var(--slate)}
   @media(max-width:900px){.expertise{grid-template-columns:1fr 1fr}}
 
@@ -94,9 +94,9 @@
   </div>
 </section>
 <div id="site-footer"></div>
-<script src="./data.js?v=10"></script>
-<script src="./db.js?v=10"></script>
-<script src="./app.js?v=10"></script>
+<script src="./data.js?v=13"></script>
+<script src="./db.js?v=13"></script>
+<script src="./app.js?v=13"></script>
 <script>
   App.initChrome("buy");
   const rows = DB.listings().filter(l => l.type==="Ranch" || l.type==="Land");
